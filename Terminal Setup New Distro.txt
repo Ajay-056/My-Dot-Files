@@ -1,0 +1,57 @@
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/romkatv/powerlevel10k $ZSH_CUSTOM/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_MODE="nerdfont-complete"
+plugins=(
+    git
+	z
+	aliases
+#	globalias
+	aws
+	cargo
+	catimg
+	copybuffer
+	colored-man-pages
+	common-aliases
+	copydir
+	copyfile
+#	dircycle
+	dirhistory
+	docker
+	docker-compose
+	kubectl
+	emoji-clock
+	encode64
+	frontend-search
+	genpass
+	perms
+	systemadmin
+	systemd
+	transfer
+	vscode
+	pip
+	git-extras
+	git-prompt
+	jsontools
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+	command-not-found
+	dotenv
+	macos
+	rake
+	last-working-dir
+	web-search
+	extract
+	history
+	sudo
+	safe-paste
+	npm
+	nvm
+	node
+	magic-enter
+	ubuntu
+)
