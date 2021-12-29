@@ -1,13 +1,26 @@
+Debian Based
+-------------
+sudo apt install zsh
+
+Arch Based
+----------
+sudo pacman -S zsh
+
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/romkatv/powerlevel10k $ZSH_CUSTOM/themes/powerlevel10k
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
+Add Following Lines in .zshrc File
+----------------------------------
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="nerdfont-complete"
+
+Following are the Plugins Im using add your prefered ones
+---------------------------------------------------------
 plugins=(
-    git
+    	git
 	z
 	aliases
 #	globalias
