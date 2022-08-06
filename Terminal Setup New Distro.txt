@@ -1,11 +1,14 @@
 Debian Based
 -------------
+sudo apt update && sudo apt upgrade
 sudo apt install zsh
 
 Arch Based
 ----------
-sudo pacman -S zsh
+sudo pacman -Syy zsh
 
+Next Steps
+----------
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/romkatv/powerlevel10k $ZSH_CUSTOM/themes/powerlevel10k
@@ -17,29 +20,24 @@ Add Following Lines in .zshrc File
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
-Following are the Plugins Im using add your prefered ones
+Following are the Plugins Im using personally (Please add your prefered ones further)
 ---------------------------------------------------------
 plugins=(
-    	git
+	git
 	z
 	aliases
 #	globalias
 	aws
-	cargo
+#	rust
 	catimg
-	copybuffer
 	colored-man-pages
-	common-aliases
-	copydir
+	copypath
 	copyfile
 #	dircycle
 	dirhistory
 	docker
 	docker-compose
-	kubectl
-	emoji-clock
 	encode64
-	frontend-search
 	genpass
 	perms
 	systemadmin
@@ -54,7 +52,7 @@ plugins=(
 	zsh-syntax-highlighting
 	command-not-found
 	dotenv
-	macos
+#	macos
 	rake
 	last-working-dir
 	web-search
@@ -66,5 +64,54 @@ plugins=(
 	nvm
 	node
 	magic-enter
-	ubuntu
+#	ubuntu
+# 	adb
+ 	ansible
+	ant
+	archlinux
+	autopep8
+	battery
+	bgnotify
+	branch
+	bundler
+	colorize
+	copybuffer
+	dirpersist
+	emoji-clock
+	fancy-ctrl-z
+	frontend-search
+#	gatsby
+	gb
+	gcloud
+#	gem
+	gh
+	git-auto-fetch
+	git-escape-maic
+	git-flow
+	github
+	gitignore
+	golang
+	helm
+	hitchhiker
+	istioctl
+	jenv
+#	jira
+ 	kops
+	kubectl
+	kubectx
+	man
+	microk8s
+	minikube
+	nmap
+	pipenv
+	pyenv
+	pylint
+	python
+#	rails
+	ripgrep
+	screen
+	terraform
+	ufw
+	urltools
 )
+
