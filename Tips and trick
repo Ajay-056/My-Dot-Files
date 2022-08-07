@@ -1,0 +1,76 @@
+systemclt status start enable
+bluetoothctl
+which, where, who, last login, last reboot
+take
+uptime -p
+ls -lS ---------> Sort Files by File Size in Linux
+ls -harlt -------> sort by last modified in reverse order with human readable size
+ranger
+tree
+sort -nk2 -------> sort the 2nd column in the output by number
+sort -u filename -------> show only unique by removing duplicates
+sort -u lsl.txt lsla.txt
+sort -t "," -nk2,5 -k9
+lwd
+ufw
+chmod, chown
+!!
+alias
+unalias
+history (h, hs, hsi)
+jobs, fg, bg, &, nohup, watch
+Vim ------> tips and tricks
+Kitty -----> terminal multiplexer
+brave
+curl
+nl
+stat
+file
+lsattr
+cut
+paste
+tr
+sort
+uniq
+diff
+pidof
+free
+xargs
+tee
+shred -u
+qalc
+
+Everything in linux is files ------> Eg tty --> /dev/pts/
+
+omz super productive pluggins:
+------------------------------
+sudo (Plugin --> Esc)
+pp_json: pretty prints json.
+is_json: returns true if valid json; false otherwise.
+urlencode_json: returns a url encoded string for the given json.
+urldecode_json: returns decoded json for the given url encoded string.
+man (Esc + man)
+copypath
+copyfile
+copybuffer (ctrl + o)
+git-auto-fetch
+git
+ducky
+hsi
+ccat
+esc esc (to add sudo if missed)
+
+Easter Eggs(Bonus):
+-------------------
+speedtest
+rust alternatives ----> dust, fd, exa, tldr, procs
+octozen -------> Display a quote on terminal startup
+cmatrix -a
+sl -a
+fortune
+cowsay
+toilet (Installed from snap do a restart and check)
+emoji-clock
+fortune
+hitchhiker
+hitchhiker_cow
