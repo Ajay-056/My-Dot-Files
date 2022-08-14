@@ -27,7 +27,8 @@ r - replace a single character.
 R - replace more than one character, until ESC is pressed.
 cc - change (replace) entire line
 c$ or C - change (replace) to the end of the line
-ciw - change (replace) entire word
+ciw - change (replace) inner word (cursor in any position of the word)
+diw - delete inner word (cursor in any position of the word)
 cw or ce - change (replace) to the end of the word
 
 s - delete character and substitute text
@@ -72,3 +73,24 @@ Ctrl + d - de-indent (move left) line one shiftwidth during insert mode
 Ctrl + n - insert (auto-complete) next match before the cursor during insert mode
 Ctrl + p - insert (auto-complete) previous match before the cursor during insert mode
 Ctrl + rx - insert the contents of register x
+
+Visual Mode
+-----------
+v
+shift + v ----> visual line
+ctrl + v ----> visual block
+
+others
+------
+zz - place the selected line to center of the screen
+gg=G --> Indent the whole file
+ggdG --> Delete whole file contents
+# --> Previous token occurance
++ --> Next token occurance
+:%s/old/new/g --> Replace everywhere in file
+:s/old/new/g --> Replace everywhere in the selected line
+qa --> to start recording @a
+q --> to stop recording
+50@a --> to repeat action recorded @a 50 times
+ctrl + a --> to increment a number
+ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
