@@ -60,11 +60,10 @@ hsi
 ccat
 esc esc (to add sudo if missed)
 
-tlp (power mgmt)
-tlp-stat
 
 Easter Eggs(Bonus):
 -------------------
+tlp (power mgmt) tlp-stat
 speedtest
 rust alternatives ----> dust, fd, exa, tldr, procs
 octozen -------> Display a quote on terminal startup
