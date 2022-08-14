@@ -60,6 +60,9 @@ hsi
 ccat
 esc esc (to add sudo if missed)
 
+tlp (power mgmt)
+tlp-stat
+
 Easter Eggs(Bonus):
 -------------------
 speedtest
