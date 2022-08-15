@@ -63,7 +63,7 @@ esc esc (to add sudo if missed)
 
 Easter Eggs(Bonus):
 -------------------
-tlp (power mgmt) tlp-stat
+tlp (power mgmt) tlp-stat or auto-cpufreq (All power mgmt packages/tools combined)
 speedtest
 rust alternatives ----> dust, fd, exa, tldr, procs
 octozen -------> Display a quote on terminal startup
