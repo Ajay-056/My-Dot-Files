@@ -1,5 +1,3 @@
-" Credits to: NeuralNine (https://github.com/NeuralNine/config-files)
-
 :set number
 :set relativenumber
 :set autoindent
@@ -15,15 +13,18 @@ Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
-Plug 'https://github.com/lifepillar/pgsql.vim' " PSQL Pluging needs :SQLSetType pgsql.vim
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
-Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
-Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
-
+Plug 'https://github.com/glepnir/dashboard-nvim' " Dashboard when nv is opened without file
+Plug 'https://github.com/dkarter/bullets.vim' " Auto bulletting & Numbering
+Plug 'https://github.com/mbbill/undotree' " Undo Tree (Nvim First feature)
+" Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
+" Plug 'https://github.com/rrethy/nvim-base16' " Add Base-16 Color Schemes
+" Plug 'https://github.com/junegunn/fzf.vim' " Fuzzy Finder Ag
+" Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
 set encoding=UTF-8
 
 call plug#end()
@@ -31,9 +32,9 @@ call plug#end()
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+" nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
 
-nmap <F8> :TagbarToggle<CR>
+" nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
 
@@ -42,15 +43,6 @@ nmap <F8> :TagbarToggle<CR>
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 
-" --- Just Some Notes ---
-" :PlugClean :PlugInstall :UpdateRemotePlugins
-"
-" :CocInstall coc-python
-" :CocInstall coc-clangd
-" :CocInstall coc-snippets
-" :CocCommand snippets.edit... FOR EACH FILE TYPE
-
-" air-line
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
