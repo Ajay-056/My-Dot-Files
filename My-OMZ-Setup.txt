@@ -5,6 +5,7 @@ sudo apt install zsh
 
 Arch Based
 ----------
+sudo pacman -Syu
 sudo pacman -Syy zsh
 
 Next Steps
@@ -18,10 +19,14 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugi
 Add Following Lines in .zshrc File
 ----------------------------------
 ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_MODE="nerdfont-complete"
+POWERLEVEL9K_MODE="Any Nerd Font" // Use Nerd fonts to get exepected results (My choice: Caskadia Code (MS))
 
-Following are the Plugins Im using personally (Please add your prefered ones further)
+// URL:  https://github.com/microsoft/cascadia-code
+
+Following are the Plugins Im using personally (Add / Remove the pluggins as per the need)
 ---------------------------------------------------------
+// URL:  https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
+
 plugins=(
 	git
 	z
@@ -81,7 +86,6 @@ plugins=(
 	fancy-ctrl-z
 	frontend-search
 #	gatsby
-	gb
 	gcloud
 #	gem
 	gh
