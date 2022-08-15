@@ -8,6 +8,10 @@ Arch Based
 sudo pacman -Syu
 sudo pacman -Syy zsh
 
+Fedora
+------
+sudo dnf install zsh
+
 Next Steps
 ----------
 chsh -s $(which zsh)
@@ -18,10 +22,10 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugi
 
 Add Following Lines in .zshrc File
 ----------------------------------
+// URL:  https://github.com/microsoft/cascadia-code
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="Any Nerd Font" // Use Nerd fonts to get exepected results (My choice: Caskadia Code (MS))
-
-// URL:  https://github.com/microsoft/cascadia-code
 
 Following are the Plugins Im using personally (Add / Remove the pluggins as per the need)
 ---------------------------------------------------------
@@ -118,4 +122,3 @@ plugins=(
 	ufw
 	urltools
 )
-
