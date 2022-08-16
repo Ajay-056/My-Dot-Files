@@ -1,3 +1,5 @@
+" Credits to: Neural Nine (https://github.com/NeuralNine/config-files) 
+
 :set number
 :set relativenumber
 :set autoindent
