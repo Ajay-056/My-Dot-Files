@@ -23,10 +23,7 @@ Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple c
 Plug 'https://github.com/glepnir/dashboard-nvim' " Dashboard when nv is opened without file
 Plug 'https://github.com/dkarter/bullets.vim' " Auto bulletting & Numbering
 Plug 'https://github.com/mbbill/undotree' " Undo Tree (Nvim First feature)
-" Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
-" Plug 'https://github.com/rrethy/nvim-base16' " Add Base-16 Color Schemes
-" Plug 'https://github.com/junegunn/fzf.vim' " Fuzzy Finder Ag
-" Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
+
 set encoding=UTF-8
 
 call plug#end()
@@ -34,9 +31,6 @@ call plug#end()
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-" nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
-
-" nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
 
