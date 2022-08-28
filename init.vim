@@ -1,5 +1,6 @@
 " Credits to: Neural Nine (https://github.com/NeuralNine/config-files) 
 
+" https://neovim.io/doc/user/quickref.html#quickref
 set number
 set relativenumber
 set autoindent
