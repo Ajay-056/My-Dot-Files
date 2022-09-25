@@ -1,9 +1,9 @@
-Debian Based
+Debian Based distro's
 -------------
 sudo apt update && sudo apt upgrade
 sudo apt install zsh
 
-Arch Based
+Arch Based distro's
 ----------
 sudo pacman -Syu
 sudo pacman -Syy zsh
