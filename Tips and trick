@@ -44,7 +44,7 @@ Everything in linux is files ------> Eg tty --> /dev/pts/
 
 omz super productive pluggins:
 ------------------------------
-sudo (Plugin --> Esc)
+sudo Plugin - esc esc (to add sudo if missed)
 pp_json: pretty prints json.
 is_json: returns true if valid json; false otherwise.
 urlencode_json: returns a url encoded string for the given json.
@@ -58,7 +58,6 @@ git
 ducky
 hsi
 ccat
-esc esc (to add sudo if missed)
 
 
 Easter Eggs(Bonus):
