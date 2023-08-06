@@ -1,3 +1,5 @@
+Vimium is an extension that can be downloaded from chrome web store. It maps the VIM key binding functions with the browser functionalities.
+
 Credits to: Phil Crosby (https://github.com/philc/vimium)
 
 
