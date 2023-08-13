@@ -12,24 +12,36 @@ Fedora
 ------
 sudo dnf install zsh
 
-Next Steps
-----------
+change the shell from bash to zsh and clone the given repos
+-----------------------------------------------------------
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/romkatv/powerlevel10k $ZSH_CUSTOM/themes/powerlevel10k
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
+Note: If you dont see % symbol post changing the shell, Create a new terminal profile and point it to /bin/zsh and restart terminal
+
+Post restarting or changing the shell it will prompt to create a config file, give the option as create an empty config file.
+
+Download any Nerd font which supports ligatures
+-----------------------------------------------
+My Choice: https://github.com/microsoft/cascadia-code
+
+1. Download from (https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip) and extract the tar or zip file
+2. Move the font files (TTF) to the following path "~/.local/share/fonts"
+3. execute the command from terminal -> fc-cache -fv "~/.local/share/fonts/"
+
 Add Following Lines in .zshrc File
 ----------------------------------
-// URL:  https://github.com/microsoft/cascadia-code
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_MODE="Any Nerd Font" // Use Nerd fonts to get exepected results (My choice: Caskadia Code (MS))
+POWERLEVEL9K_MODE="CaskaydiaCove Nerd Font" // Use Nerd fonts to get exepected results (My choice: Caskadia Code (MS))
 
-Following are the Plugins Im using personally (Add / Remove the pluggins as per the need)
+Following are the Plugins Im using personally (Add / Remove the plugins as per the need)
 ---------------------------------------------------------
 // URL:  https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
+
+Note: some of the given plugins may throw an error at your time of install, please remove or comment the plugin and restart terminal
 
 plugins=(
 	git
@@ -94,13 +106,13 @@ plugins=(
 #	gem
 	gh
 	git-auto-fetch
-	git-escape-maic
+	git-escape-magic
 	git-flow
 	github
 	gitignore
 	golang
 	helm
-	hitchhiker
+#	hitchhiker
 	istioctl
 	jenv
 #	jira
