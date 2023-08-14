@@ -1,6 +1,17 @@
 " Credits to: Neural Nine (https://github.com/NeuralNine/config-files) 
 
 " https://neovim.io/doc/user/quickref.html#quickref
+
+" Instructions before creating config file
+
+" 1. Neovim must be installed
+" 2. (Linux) Navigate to the folder ~/.config and create a folder named "nvim", inside nvim folder create a file named "init.vim"
+" 3. (Windows) C:\Users\${Username}\AppData\Local\nvim\init.vim
+" 4. Download vim plug using the steps - https://github.com/junegunn/vim-plug#unix-linux
+" 5. Copy and modify the config (If needed), save and close the file
+" 6. Relaunch neovim again and issue ":PlugInstall" to install the pluggins used in this config file
+" 7. Ready to rock 🚀🚀
+
 set number
 set relativenumber
 set autoindent
@@ -10,7 +21,7 @@ set smarttab
 set softtabstop=4
 set mouse=a
 set clipboard=unnamedplus
-set cursorline
+" set cursorline
 set title
 set wildmenu
 set hidden
@@ -20,7 +31,7 @@ set ignorecase
 set smartcase
 set showmatch
 set hlsearch
-set ttyfast
+" set ttyfast
 
 
 filetype plugin indent on
@@ -51,7 +62,7 @@ set encoding=UTF-8
 
 call plug#end()
 
-" nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-q> :q!<CR>
 nnoremap <C-w> :wq<CR>
 nnoremap <F4> :bd<CR>

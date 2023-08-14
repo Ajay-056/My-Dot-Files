@@ -1,16 +1,21 @@
+Pre-requiste packages before proceeding
+---------------------------------------
+
 Debian Based distro's
--------------
+---------------------
 sudo apt update && sudo apt upgrade
-sudo apt install zsh
+sudo apt install zsh git wget
 
 Arch Based distro's
-----------
-sudo pacman -Syu
-sudo pacman -Syy zsh
+-------------------
+sudo pacman -Syu (optional)
+sudo pacman -Syy zsh git wget
 
 Fedora
 ------
-sudo dnf install zsh
+sudo dnf upgrade --refresh (optional)
+sudo dnf system-upgrade download (optional)
+sudo dnf install zsh git wget
 
 change the shell from bash to zsh and clone the given repos
 -----------------------------------------------------------
@@ -22,26 +27,26 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugi
 
 Note: If you dont see % symbol post changing the shell, Create a new terminal profile and point it to /bin/zsh and restart terminal
 
-Post restarting or changing the shell it will prompt to create a config file, give the option as create an empty config file.
+Post restarting or changing the shell it will prompt to create a zsh config file (.zshrc), give the option as create an empty config file.
 
 Download any Nerd font which supports ligatures
 -----------------------------------------------
 My Choice: https://github.com/microsoft/cascadia-code
 
-1. Download from (https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.zip) and extract the tar or zip file
-2. Move the font files (TTF) to the following path "~/.local/share/fonts"
-3. execute the command from terminal -> fc-cache -fv "~/.local/share/fonts/"
+1. wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.tar.xz && tar -xf CascadiaCode.tar.xz
+2. Move the font files (TTF) to the following path - cd CascadiaCode && mv * "~/.local/share/fonts"
+3. execute the command to refresh font cache -> fc-cache -fv "~/.local/share/fonts/"
 
 Add Following Lines in .zshrc File
 ----------------------------------
 ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_MODE="CaskaydiaCove Nerd Font" // Use Nerd fonts to get exepected results (My choice: Caskadia Code (MS))
+POWERLEVEL9K_MODE="CaskaydiaCove Nerd Font" // Use Nerd fonts to get exepected results (My choice: Cascadia Code)
 
 Following are the Plugins Im using personally (Add / Remove the plugins as per the need)
 ---------------------------------------------------------
 // URL:  https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 
-Note: some of the given plugins may throw an error at your time of install, please remove or comment the plugin and restart terminal
+Note: some of the given plugins may throw an error at your time of install, please remove or comment the error occured plugin from zsh config file and restart terminal
 
 plugins=(
 	git
