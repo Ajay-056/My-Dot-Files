@@ -28,6 +28,7 @@ R - replace more than one character, until ESC is pressed.
 cc - change (replace) entire line
 c$ or C - change (replace) to the end of the line
 ciw - change (replace) inner word (cursor in any position of the word)
+ci" - change the content inside any surround characters like ()[]{}""''  "<your-content>"
 diw - delete inner word (cursor in any position of the word)
 cw or ce - change (replace) to the end of the word
 
@@ -82,11 +83,25 @@ ctrl + v ----> visual block
 
 others
 ------
+:r! any linux command --> will read the output of the command and paste it in the current opened file
+Type any linux command in the file, and to replace the command with its output ---> :!!sh
+In Visual mode, Select a number values column and to sort it use --> :!sort
+To rename a file within editor --> :sav filename.file_extension (Note that it will create a copy of the current file in editor)
+Vertical split a file --> :vs path to file
+Horizontal split a file --> :sp path to file
+/^\s*$/d
 zz - place the selected line to center of the screen
 gg=G --> Indent the whole file
 ggdG --> Delete whole file contents
-# --> Previous token occurance
-+ --> Next token occurance
+ctrl + o --> move the cursor way back to historical placeholders
+ctrl + i --> move the cursor forward from historical placeholders to current placeholder
+To find and remove empty lines in a file --> :/^\s*$/d
+To remove highlights after a search --> :noh
+If there is a space in the search use \+ --> /export\+ PATH
+vi( --> selects the content inside the enclosing character used
+vip --> select a paragraph
+# --> Previous word occurance
+* --> Next word occurance
 :%s/old/new/g --> Replace everywhere in file
 :s/old/new/g --> Replace everywhere in the selected line
 qa --> to start recording @a
