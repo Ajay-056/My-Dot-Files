@@ -84,12 +84,12 @@ ctrl + v ----> visual block
 others
 ------
 :r! any linux command --> will read the output of the command and paste it in the current opened file
+:e ---> to open a new file in the same tab
 Type any linux command in the file, and to replace the command with its output ---> :!!sh
 In Visual mode, Select a number values column and to sort it use --> :!sort
 To rename a file within editor --> :sav filename.file_extension (Note that it will create a copy of the current file in editor)
 Vertical split a file --> :vs path to file
 Horizontal split a file --> :sp path to file
-/^\s*$/d
 zz - place the selected line to center of the screen
 gg=G --> Indent the whole file
 ggdG --> Delete whole file contents
@@ -102,6 +102,7 @@ vi( --> selects the content inside the enclosing character used
 vip --> select a paragraph
 # --> Previous word occurance
 * --> Next word occurance
+:g/word to find/norm! (any normal mode commands) ---> To perform normal mode bindings on the founded occurance of words
 :%s/old/new/g --> Replace everywhere in file
 :s/old/new/g --> Replace everywhere in the selected line
 qa --> to start recording @a
