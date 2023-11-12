@@ -10,9 +10,9 @@ Here is my old flavour, which is not pretty much configured for coding, But few 
 
 My Latest config, which I admired and started using from Chris Titus Tech, This is fully configured for coding. Credits to Kickstart-Nvim project
 
-**Chris Titus Tech Flavour:** https://github.com/ChrisTitusTech/neovim
+**Chris Titus Tech Flavour:** `https://github.com/ChrisTitusTech/neovim`
 
-**Original version of kickstart nvim:** https://github.com/nvim-lua/kickstart.nvim
+**Original version of kickstart nvim:** `https://github.com/nvim-lua/kickstart.nvim`
 
 ![image](https://github.com/Ajay-056/My-Dot-Files/assets/40629789/ba1d0611-cc78-4bf1-bc51-be44d8c7ae43)
 
