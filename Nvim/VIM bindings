@@ -36,6 +36,16 @@ s - delete character and substitute text
 S - delete line and substitute text (same as cc)
 xp - transpose two letters (delete and paste)
 
+Find characters in a line 
+-------------------------
+
+f {character to navigate} --> Move forward to the first occurance of the character
+; --> Move forward to the next occurance of the character
+, --> Move backwards to the next occurance of the character
+vf{character to navigate} --> start selection from current currsor position to the 1st occurance of the character
+
+t {character to navigate} --> Move forward to character before the first occurance of the serached character
+
 Cut and paste:
 --------------
 --> yy - yank (copy) a line
