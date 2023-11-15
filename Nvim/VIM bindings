@@ -128,3 +128,17 @@ ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
 "xp - paste contents of register x
 "+y - yank into the system clipboard register
 "+p - paste from the system clipboard register
+
+Supermacy of 'g'
+---------------
+gj, gk --> To go line by line in a big paragraph. we can remap j and k to gj and gk
+g0,g$ --> To go to start or end of current line in a paragraph
+gqq (last q is text object),gq5j --> to auto format the paragraph. can be mapped to Q
+gu, gU, gu$, guu, gU3w, gUU, gUfl, ~, g~ --> capitalize and un cap
+gf --> when the cursor is under any file name or path to file it will open in a sep window and will have option to close and back to original editor
+gv --> When any word or group of words is selected, use this to go back to the selection from anywhere in the file
+gi --> go to last insert mode used position
+gJ --> Join lines without space in between
+g& --> if we run a subsititute query in one line, later if decide to run the same query for whole document, Use this. 
+Note that the sub query you need to run again should be the one executed recently
+
