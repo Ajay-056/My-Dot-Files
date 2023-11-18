@@ -2,12 +2,15 @@ Screen cursor movements:
 -----------------------
 --> Ctrl + b - move back one full screen
 --> Ctrl + u - move back 1/2 a screen
-H - move to top of screen
 
+--> Ctrl + f - move forward one full screen
 --> Ctrl + d - move forward 1/2 a screen
+
+H - move to top of screen
 M - move to middle of screen
 L - move to bottom of screen
---> Ctrl + f - move forward one full screen
+
+zz - place the selected line to center of the screen
 
 Word Movements:
 --------------
@@ -40,32 +43,43 @@ Find characters in a line
 -------------------------
 
 f {character to navigate} --> Move forward to the first occurance of the character
-; --> Move forward to the next occurance of the character
-, --> Move backwards to the next occurance of the character
-vf{character to navigate} --> start selection from current currsor position to the 1st occurance of the character
+F {character to navigate} --> Move backwards to the first occurance of the character
 
 t {character to navigate} --> Move forward to character before the first occurance of the serached character
+T {character to navigate} --> Move backwards to character before the first occurance of the serached character
+
+; --> Move forward to the next occurance of the character
+, --> Move backwards to the next occurance of the character
+
+vf {character to navigate} --> start selection from current currsor position to the 1st occurance of the character
 
 Cut and paste:
 --------------
 --> yy - yank (copy) a line
 --> 2yy - yank (copy) 2 lines
 --> yw - yank (copy) the characters of the word from the cursor position to the start of the next word
+--> yaw - yank (copy) word under the cursor and the space after or before it
+--> yiw / yiW - yank a word from any cursor position in the word
 --> y$ or Y - yank (copy) to end of line
 --> p - put (paste) the clipboard after cursor
 --> P - put (paste) before cursor
+gp - put (paste) the clipboard after cursor and leave cursor after the new text
+gP - put (paste) before cursor and leave cursor after the new text
+"xy - yank into register x
+"xp - paste contents of register x
+"+y - yank into the system clipboard register
+"+p - paste from the system clipboard register
+
+
+Delete:
+_______
+--> diw - delete (cut) word under the cursor
+--> daw - delete (cut) word under the cursor and the space after or before it
 --> dd - delete (cut) a line
 --> 2dd - delete (cut) 2 lines
 --> dw - delete (cut) the characters of the word from the cursor position to the start of the next word
 --> d$ or D - delete (cut) to the end of the line
---> x - delete (cut) character
-
-yiw - yank (copy) word under the cursor
-yaw - yank (copy) word under the cursor and the space after or before it
-gp - put (paste) the clipboard after cursor and leave cursor after the new text
-gP - put (paste) before cursor and leave cursor after the new text
-diw - delete (cut) word under the cursor
-daw - delete (cut) word under the cursor and the space after or before it
+--> x - delete (cut) character under the cursor
 
 Insert mode - inserting/appending text:
 --------------------------------------
@@ -91,30 +105,30 @@ v
 shift + v ----> visual line
 ctrl + v ----> visual block
 
-others
-------
+Command mode:
+------------
 :r! any linux command --> will read the output of the command and paste it in the current opened file
-:e ---> to open a new file in the same tab
-Type any linux command in the file, and to replace the command with its output ---> :!!sh
-In Visual mode, Select a number values column and to sort it use --> :!sort
-To rename a file within editor --> :sav filename.file_extension (Note that it will create a copy of the current file in editor)
-Vertical split a file --> :vs path to file
-Horizontal split a file --> :sp path to file
-zz - place the selected line to center of the screen
-gg=G --> Indent the whole file
-ggdG --> Delete whole file contents
+:e --> to open a new file in the same tab
+:!!sh --> Type any linux command in the file, and to replace the command with its output 
+:!sort --> In Visual mode, Select a number values column and to sort it use 
+:sav --> To rename a file within editor  filename.file_extension (Note that it will create a copy of the current file in editor)
+:vs path to file --> Vertical split a file 
+:sp path to file --> Horizontal split a file 
+:/^\s*$/d --> To find and remove empty lines in a file 
+:noh --> To remove highlights after a search 
+:g/word to find/norm! (any normal mode commands) --> To perform normal mode bindings on the founded occurance of words
+:%s/old/new/g --> Replace everywhere in file
+:s/old/new/g --> Replace everywhere in the selected line
+
+Others
+------
 ctrl + o --> move the cursor way back to historical placeholders
 ctrl + i --> move the cursor forward from historical placeholders to current placeholder
-To find and remove empty lines in a file --> :/^\s*$/d
-To remove highlights after a search --> :noh
 If there is a space in the search use \+ --> /export\+ PATH
 vi( --> selects the content inside the enclosing character used
 vip --> select a paragraph
-# --> Previous word occurance
-* --> Next word occurance
-:g/word to find/norm! (any normal mode commands) ---> To perform normal mode bindings on the founded occurance of words
-:%s/old/new/g --> Replace everywhere in file
-:s/old/new/g --> Replace everywhere in the selected line
+# --> search the word under cursor backwards
+* --> search the word under cursor forwards
 qa --> to start recording @a
 q --> to stop recording
 ma --> set current position for mark A
@@ -124,10 +138,6 @@ y`a --> yank text to position of mark A
 ctrl + a --> to increment a number
 ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
 :reg[isters] - show registers content
-"xy - yank into register x
-"xp - paste contents of register x
-"+y - yank into the system clipboard register
-"+p - paste from the system clipboard register
 
 Supermacy of 'g'
 ---------------
@@ -141,4 +151,5 @@ gi --> go to last insert mode used position
 gJ --> Join lines without space in between
 g& --> if we run a subsititute query in one line, later if decide to run the same query for whole document, Use this. 
 Note that the sub query you need to run again should be the one executed recently
-
+gg=G --> Indent the whole file
+ggdG --> Delete whole file contents
