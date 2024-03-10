@@ -119,6 +119,7 @@ Command mode:
 :g/word to find/norm! (any normal mode commands) --> To perform normal mode bindings on the founded occurance of words
 :%s/old/new/g --> Replace everywhere in file
 :s/old/new/g --> Replace everywhere in the selected line
+:norm --> Most useful in visual line mode to apply normal mode commands to multiple lines (eg. A +)
 
 Others
 ------
