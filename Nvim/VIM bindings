@@ -76,6 +76,7 @@ _______
 --> diw - delete (cut) word under the cursor
 --> daw - delete (cut) word under the cursor and the space after or before it
 --> dd - delete (cut) a line
+--> dk, dj - delete current line and above or below line
 --> 2dd - delete (cut) 2 lines
 --> dw - delete (cut) the characters of the word from the cursor position to the start of the next word
 --> d$ or D - delete (cut) to the end of the line
@@ -83,7 +84,8 @@ _______
 
 Insert mode - inserting/appending text:
 --------------------------------------
---> i - insert (append) at the end of the line
+--> i - insert (append) at the current cursor position
+--> I - insert (append) at the end of the line
 --> o - append (open) a new line below the current line
 --> O - append (open) a new line above the current line
 --> ea - insert (append) at the end of the word
@@ -137,6 +139,7 @@ ma --> set current position for mark A
 y`a --> yank text to position of mark A
 50@a --> to repeat action recorded @a 50 times
 ctrl + a --> to increment a number
+ctrl + x --> to decrement a number
 ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
 :reg[isters] - show registers content
 
