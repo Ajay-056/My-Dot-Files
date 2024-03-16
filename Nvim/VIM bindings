@@ -125,6 +125,8 @@ Command mode:
 :%s/old/new/g --> Replace everywhere in file
 :s/old/new/g --> Replace everywhere in the selected line
 :norm --> Most useful in visual line mode to apply normal mode commands to multiple lines (eg. A +)
+:earlier 1m,5m,10m --> To undo changes to last x time
+:later  1m,5m,10m --> To redo changes to future x time
 
 Others
 ------
