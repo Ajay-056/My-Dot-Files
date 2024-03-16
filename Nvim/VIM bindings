@@ -78,12 +78,21 @@ Delete:
 _______
 --> diw - delete (cut) word under the cursor
 --> daw - delete (cut) word under the cursor and the space after or before it
+--> dis - delete inner sentence
+--> das - delete a sentence
+--> dib - delete inner '(' ')' block
+--> dab - delete a '(' ')' block
+--> dip - delete inner paragraph
+--> dap - delete a paragraph
+--> diB - delete inner '{' '}' block
+--> daB - delete a '{' '}' block
 --> dd - delete (cut) a line
 --> dk, dj - delete current line and above or below line
 --> 2dd - delete (cut) 2 lines
 --> dw - delete (cut) the characters of the word from the cursor position to the start of the next word
 --> d$ or D - delete (cut) to the end of the line
 --> x - delete (cut) character under the cursor
+--> dG - delete entire file from current line
 
 Insert mode - inserting/appending text:
 --------------------------------------
