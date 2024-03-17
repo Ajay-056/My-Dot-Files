@@ -73,6 +73,21 @@ gP - put (paste) before cursor and leave cursor after the new text
 "+y - yank into the system clipboard register
 "+p - paste from the system clipboard register
 
+Registers:
+_________
+
+1. The unnamed register ""
+2. 10 numbered registers "0 to "9 (0 will always have the last deleted/yanked content, it will work like stack)
+3. The small delete register "-
+4. 26 named registers "a to "z or "A to "Z
+5. Three read-only registers ": (Last used command) ". (Last insert mode text) "% (current file)
+6. Alternate buffer register "# (Contains last opened file) use ctrl + 6 to switch back and forth
+7. The expression register "=
+8. The black hole register "_
+9. The selection registers "* and "+
+10. Last search pattern register "/ 
+
+To edit the contents of a register --> :let @a='' (To edit an existing macro ctrl+r a, to paste the contents of register)
 
 Delete:
 _______
@@ -137,10 +152,22 @@ Command mode:
 :earlier 1m,5m,10m --> To undo changes to last x time
 :later  1m,5m,10m --> To redo changes to future x time
 
+Help:
+____
+
+:help d
+:help deleting
+:help CTRL-A
+:help i_CTRL-A v_CTRL-A i_<Up> 
+:help 'option'
+
+
 Others
 ------
 ctrl + o --> move the cursor way back to historical placeholders
 ctrl + i --> move the cursor forward from historical placeholders to current placeholder
+J --> to join the below line with space in between
+r <Enter> --> Will break the line from current cursor position to next line
 If there is a space in the search use \+ --> /export\+ PATH
 vi( --> selects the content inside the enclosing character used
 vip --> select a paragraph
