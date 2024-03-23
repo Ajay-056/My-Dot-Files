@@ -89,7 +89,7 @@ _________
 
 To edit the contents of a register --> :let @a='' (To edit an existing macro ctrl+r a, to paste the contents of register)
 
-Delete:
+Delete, Yank, Change:
 _______
 --> diw - delete (cut) word under the cursor
 --> daw - delete (cut) word under the cursor and the space after or before it
@@ -181,6 +181,7 @@ y`a --> yank text to position of mark A
 50@a --> to repeat action recorded @a 50 times
 ctrl + a --> to increment a number
 ctrl + x --> to decrement a number
+In visual mode, to increment a column or lines of number use (g ctrl + a)
 ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
 :reg[isters] - show registers content
 
