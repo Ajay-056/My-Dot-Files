@@ -111,7 +111,9 @@ _______
 
 Insert mode - inserting/appending text:
 --------------------------------------
---> i - insert (append) at the current cursor position
+--> i - insert (append) at the current cursor position before the character
+--> I - insert (append) at the start of the line
+--> i - insert (append) at the current cursor position after the character
 --> I - insert (append) at the end of the line
 --> o - append (open) a new line below the current line
 --> O - append (open) a new line above the current line
@@ -121,6 +123,9 @@ Insert mode - inserting/appending text:
 
 Ctrl + h - delete the character before the cursor during insert mode
 Ctrl + w - delete word before the cursor during insert mode
+Ctrl/Shift Left/Right - To move one word left/right
+Ctrl + a - will insert the last word typed during last insert mode
+Ctrl + y - will duplicate the line above the cursor char by char
 Ctrl + j - begin new line during insert mode
 Ctrl + t - indent (move right) line one shiftwidth during insert mode
 Ctrl + d - de-indent (move left) line one shiftwidth during insert mode
@@ -136,6 +141,7 @@ ctrl + v ----> visual block
 
 Command mode:
 ------------
+:map --> to view the mappings (use nmap, imap to view mappings of a specific mode)
 :r! any linux command --> will read the output of the command and paste it in the current opened file
 :e --> to open a new file in the same tab
 :!!sh --> Type any linux command in the file, and to replace the command with its output 
@@ -151,6 +157,9 @@ Command mode:
 :norm --> Most useful in visual line mode to apply normal mode commands to multiple lines (eg. A +)
 :earlier 1m,5m,10m --> To undo changes to last x time
 :later  1m,5m,10m --> To redo changes to future x time
+:iabbrev/:iab AK Ajay Krishna R --> To abbreviate a keyword using space key. It can be defined in the init.lua file as well
+:digraphs --> To enter some special characters that are not in the keyboard (Insert Mode)
+          --> To use an diagraph (Ca is mapped to ©) ctrl + kCa
 
 Help:
 ____
@@ -161,6 +170,18 @@ ____
 :help i_CTRL-A v_CTRL-A i_<Up> 
 :help 'option'
 
+Folds
+-----
+To create a fold for a paragraph --> zf (use text objects, like ap, ip)
+To open the fold created --> zo
+To close the fold again --> zc
+To open all the nested folds --> zr/zR
+To open close all the nested folds --> zm/zM
+To disable the folds --> zn
+To enable the folds again --> zN
+To toggle the folds on/off --> zi
+To delete a fold on the cursor line --> zd
+To persist the folds after reopening the file --> :mkview :loadview
 
 Others
 ------
@@ -183,7 +204,7 @@ y`a --> yank text to position of mark A
 50@a --> to repeat action recorded @a 50 times
 ctrl + a --> to increment a number
 ctrl + x --> to decrement a number
-In visual mode, to increment a column or lines of number use (g ctrl + a)
+In visual mode, to increment a column or lines of number based on the previous number use (g ctrl + a)
 ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
 :reg[isters] - show registers content
 
