@@ -143,7 +143,7 @@ Command mode:
 :sav --> To rename a file within editor  filename.file_extension (Note that it will create a copy of the current file in editor)
 :vs path to file --> Vertical split a file 
 :sp path to file --> Horizontal split a file 
-:/^\s*$/d --> To find and remove empty lines in a file 
+:/^\s*$/d or :g/^$/d --> To find and remove empty lines in a file 
 :noh --> To remove highlights after a search 
 :g/word to find/norm! (any normal mode commands) --> To perform normal mode bindings on the founded occurance of words
 :%s/old/new/g --> Replace everywhere in file
@@ -164,8 +164,10 @@ ____
 
 Others
 ------
-ctrl + o --> move the cursor way back to historical placeholders
-ctrl + i --> move the cursor forward from historical placeholders to current placeholder
+[[ --> alternate binding for gg (Go to top of file, ie line 1)
+]] --> alternate binding for ctrl + G (Go to last line in file)
+ctrl + o --> move the cursor way back to historical placeholders (Jump List)
+ctrl + i --> move the cursor forward from historical placeholders to current placeholder (Jump List)
 J --> to join the below line with space in between
 r <Enter> --> Will break the line from current cursor position to next line
 If there is a space in the search use \+ --> /export\+ PATH
