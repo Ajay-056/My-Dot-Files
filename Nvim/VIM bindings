@@ -113,8 +113,8 @@ Insert mode - inserting/appending text:
 --------------------------------------
 --> i - insert (append) at the current cursor position before the character
 --> I - insert (append) at the start of the line
---> i - insert (append) at the current cursor position after the character
---> I - insert (append) at the end of the line
+--> a - insert (append) at the current cursor position after the character
+--> A - insert (append) at the end of the line
 --> o - append (open) a new line below the current line
 --> O - append (open) a new line above the current line
 --> ea - insert (append) at the end of the word
