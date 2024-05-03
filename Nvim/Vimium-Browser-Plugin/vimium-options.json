@@ -1,0 +1,24 @@
+{
+  "keyMappings": "map R reload hard\nmap M toggleMuteTab all\nmap q createTab https://www.youtube.com/\nmap e createTab https://www.github.com/\nmap w createTab https://chromewebstore.google.com/\nmap ct LinkHints.activateMode action=copy-text\n\n# Custom Searches\nmap s1 Vomnibar.activateInNewTab keyword=wi\nmap s2 Vomnibar.activateInNewTab keyword=go\nmap s3 Vomnibar.activateInNewTab keyword=ye\nmap s4 Vomnibar.activateInNewTab keyword=gm\nmap s5 Vomnibar.activateInNewTab keyword=du\nmap s6 Vomnibar.activateInNewTab keyword=az",
+  "newTabUrl": "https://duckduckgo.com/",
+  "searchEngines": "wi: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ngo: https://www.google.com/search?q=%s Google\nye: https://www.youtube.com/results?search_query=%s Youtube\ngm: https://www.google.com/maps?q=%s Google maps\ndu: https://duckduckgo.com/?q=%s DuckDuckGo\naz: https://www.amazon.com/s/?field-keywords=%s\n\n# l: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\n# bi: https://www.bing.com/search?q=%s Bing",
+  "settingsVersion": "2.1.2",
+  "exclusionRules": [
+    {
+      "passKeys": "fkm.,0123456789><",
+      "pattern": "https?://partner.cloudskillsboost.google/*"
+    },
+    {
+      "passKeys": "/",
+      "pattern": "https?://github.com/*"
+    },
+    {
+      "passKeys": "?f/?.,mckjl123456789<>",
+      "pattern": "https?://www.youtube.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
+    }
+  ]
+}
