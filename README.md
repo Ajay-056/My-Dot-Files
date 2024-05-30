@@ -4,16 +4,16 @@
 ![Screenshot_20220816_223201](https://user-images.githubusercontent.com/40629789/184937150-310a7f99-0c85-402e-9fde-85b984e29d33.png)
 
 Take a look at my Glaze WM config (i3 based tiling window manager for windows)
-`https://github.com/Ajay-056/Glaze-WM-Config`
+<https://github.com/Ajay-056/Glaze-WM-Config>
 
 Here is my old flavour of neovim, which is not pretty much configured for coding, But few customizations that I learnt and applied on top of vanilla neovim
 ![Screenshot_20220816_014409](https://user-images.githubusercontent.com/40629789/184710644-f9cb8af2-e439-4f4c-a196-75070f101cee.png)
 
 My Latest config, which I admired and started using from Chris Titus Tech, This is fully configured for coding. Credits to Kickstart-Nvim project
 
-**Chris Titus Tech Flavour:** `https://github.com/ChrisTitusTech/neovim`
+**Chris Titus Tech Flavour:** <https://github.com/ChrisTitusTech/neovim>
 
-**Original version of kickstart nvim:** `https://github.com/nvim-lua/kickstart.nvim`
+**Original version of kickstart nvim:** <https://github.com/nvim-lua/kickstart.nvim>
 
 ![image](https://github.com/Ajay-056/My-Dot-Files/assets/40629789/ba1d0611-cc78-4bf1-bc51-be44d8c7ae43)
 
