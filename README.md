@@ -3,8 +3,9 @@
 
 ![Screenshot_20220816_223201](https://user-images.githubusercontent.com/40629789/184937150-310a7f99-0c85-402e-9fde-85b984e29d33.png)
 
-Take a look at my Glaze WM config (i3 based tiling window manager for windows)
-<https://github.com/Ajay-056/Glaze-WM-Config>
+Take a look at my other configs/dots below,
+- <https://github.com/Ajay-056/Glaze-WM-Config>
+- <https://github.com/Ajay-056/Obsidian-Config>
 
 Here is my old flavour of neovim, which is not pretty much configured for coding, But few customizations that I learnt and applied on top of vanilla neovim
 ![Screenshot_20220816_014409](https://user-images.githubusercontent.com/40629789/184710644-f9cb8af2-e439-4f4c-a196-75070f101cee.png)
