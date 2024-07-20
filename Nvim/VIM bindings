@@ -11,9 +11,6 @@ M - move to middle of screen
 L - move to bottom of screen
 
 zz, zt, zb --> move current line to middle/top/bottom of screen
-zc zo zuz -->	fold unfold update-fold
-zr zm zR zM -->	reduce/more fold, reduce/more all fold
-zn zN zi -->	open/close all fold temporarily, and toggle
 
 Word Movements:
 --------------
