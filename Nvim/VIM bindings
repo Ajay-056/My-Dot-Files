@@ -48,15 +48,15 @@ F {character to navigate} --> Move backwards to the first occurance of the chara
 t {character to navigate} --> Move forward to character before the first occurance of the serached character
 T {character to navigate} --> Move backwards to character before the first occurance of the serached character
 
-; --> Move forward to the next occurance of the character
-, --> Move backwards to the next occurance of the character
+; --> Move forward to the next occurance of the character. Works only for the last character found using find
+, --> Move backwards to the next occurance of the character. Works only for the last character found using fin
 
 vf {character to navigate} --> start selection from current currsor position to the 1st occurance of the character
 
 Cut and paste:
 --------------
 --> yy - yank (copy) a line
---> 2yy - yank (copy) 2 lines
+--> 2yy or yj / yk - yank (copy) 2 lines
 --> yw - yank (copy) the characters of the word from the cursor position to the start of the next word
 --> yaw - yank (copy) word under the cursor and the space after or before it
 --> yiw / yiW - yank a word from any cursor position in the word
@@ -139,7 +139,7 @@ ctrl + v ----> visual block
 Command mode:
 ------------
 :map --> to view the mappings (use nmap, imap to view mappings of a specific mode)
-:r! any linux command --> will read the output of the command and paste it in the current opened file
+:r! any shell command --> will read the output of the command and paste it in the current opened file (default shell of the an os will be used eg. windows - cmd, linux - bash). 
 :e --> to open a new file in the same tab
 :!!sh --> Type any linux command in the file, and to replace the command with its output 
 :!sort --> In Visual mode, Select a number values column and to sort it use 
@@ -211,6 +211,7 @@ gj, gk --> To go line by line in a big paragraph. we can remap j and k to gj and
 g0,g$ --> To go to start or end of current line in a paragraph
 gqq (last q is text object),gq5j --> to auto format the paragraph. can be mapped to Q
 gu, gU, gu$, guu, gU3w, gUU, gUfl, ~, g~ --> capitalize and un cap
+gx --> open link under cursor in default browser
 gf --> when the cursor is under any file name or path to file it will open in a sep window and will have option to close and back to original editor
 gv --> When any word or group of words is selected, use this to go back to the selection from anywhere in the file
 gi --> go to last insert mode used position
