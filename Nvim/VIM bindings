@@ -1,5 +1,5 @@
 Screen movements:
------------------------
+----------------
 --> Ctrl + b - move back one full screen
 --> Ctrl + u - move back 1/2 a screen
 
@@ -24,39 +24,11 @@ E - jump forwards to the end of a word (words can contain punctuation)
 B - jump backwards to the start of a word (words can contain punctuation)
 gE - jump backwards to the end of a word (words can contain punctuation)
 
-Replace or change bindings:
----------------------------
-r - replace a single character.
-R - replace more than one character, until ESC is pressed.
-cc - change (replace) entire line
-c$ or C - change (replace) to the end of the line
-ciw - change (replace) inner word (cursor in any position of the word)
-ci" - change the content inside any surround characters like ()[]{}""''  "<your-content>"
-diw - delete inner word (cursor in any position of the word)
-cw or ce - change (replace) to the end of the word
-
-s - delete character and substitute text
-S - delete line and substitute text (same as cc)
-xp - transpose two letters (delete and paste)
-
-Find characters in a line 
--------------------------
-
-f {character to navigate} --> Move forward to the first occurance of the character
-F {character to navigate} --> Move backwards to the first occurance of the character
-
-t {character to navigate} --> Move forward to character before the first occurance of the serached character
-T {character to navigate} --> Move backwards to character before the first occurance of the serached character
-
-; --> Move forward to the next occurance of the character. Works only for the last character found using find
-, --> Move backwards to the next occurance of the character. Works only for the last character found using fin
-
-vf {character to navigate} --> start selection from current currsor position to the 1st occurance of the character
-
 Cut and paste:
 --------------
 --> yy - yank (copy) a line
 --> 2yy or yj / yk - yank (copy) 2 lines
+--> yl copy the character under the cursor
 --> yw - yank (copy) the characters of the word from the cursor position to the start of the next word
 --> yaw - yank (copy) word under the cursor and the space after or before it
 --> yiw / yiW - yank a word from any cursor position in the word
@@ -70,9 +42,38 @@ gP - put (paste) before cursor and leave cursor after the new text
 "+y - yank into the system clipboard register
 "+p - paste from the system clipboard register
 
-Registers:
-_________
+Replace or change bindings:
+---------------------------
+r/3ra - replace a single/multiple character(s).
+R - replace more than one character, until ESC is pressed.
+cc - change (replace) entire line
+c$ or C - change (replace) to the end of the line
+ciw - change (replace) inner word (cursor in any position of the word)
+ci" - change the content inside any surround characters like ()[]{}""''  "<your-content>"
+cw or ce - change (replace) to the end of the word
+xp - transpose two letters (delete and paste)
 
+diw - delete inner word (cursor in any position of the word)
+d) delete up to the end of the sentence
+s - delete character and substitute text
+S - delete line and substitute text (same as cc)
+
+
+Find characters in a line 
+-------------------------
+f {character to navigate} --> Move forward to the first occurance of the character
+F {character to navigate} --> Move backwards to the first occurance of the character
+
+t {character to navigate} --> Move forward to character before the first occurance of the serached character
+T {character to navigate} --> Move backwards to character before the first occurance of the serached character
+
+; --> Move forward to the next occurance of the character. Works only for the last character found using find
+, --> Move backwards to the next occurance of the character. Works only for the last character found using fin
+
+vf {character to navigate} --> start selection from current currsor position to the 1st occurance of the character
+
+Registers:
+----------
 1. The unnamed register ""
 2. 10 numbered registers "0 to "9 (0 will always have the last deleted/yanked content, it will work like stack)
 3. The small delete register "-
@@ -84,10 +85,20 @@ _________
 9. The selection registers "* and "+
 10. Last search pattern register "/ 
 
-To edit the contents of a register --> :let @a='' (To edit an existing macro ctrl+r a, to paste the contents of register)
+To edit the contents of a register --> 
+       :let @a='' (To edit an existing macro ctrl+r a, to paste the contents of register) - Method 1
+       paste the contents of the regsiter (eg. "ap) and edit the content then yank it back to "a" register (eg. "ay) - Method 2
+       qA{commands to append} --> Will append to the existing macro
+
+qa --> to start recording @a
+q --> to stop recording
+50@a --> to repeat action recorded @a 50 times
+@@ --> To repeat the last macro used
+qA -->
+:reg[isters] - show registers content
 
 Delete, Yank, Change:
-_______
+--------------------
 --> diw - delete (cut) word under the cursor
 --> daw - delete (cut) word under the cursor and the space after or before it
 --> dis - delete inner sentence
@@ -99,11 +110,12 @@ _______
 --> diB - delete inner '{' '}' block
 --> daB - delete a '{' '}' block
 --> dd - delete (cut) a line
---> dk, dj - delete current line and above or below line
+--> dk / d3k, dj / d3j - delete current line and above or below line
 --> 2dd - delete (cut) 2 lines
 --> dw - delete (cut) the characters of the word from the cursor position to the start of the next word
 --> d$ or D - delete (cut) to the end of the line
---> x - delete (cut) character under the cursor
+--> x - delete (cut) character under the cursor. Same as dl
+--> X - delete (cut) character before the cursor. Same as dh
 --> dG - delete entire file from current line
 
 Insert mode - inserting/appending text:
@@ -121,6 +133,7 @@ Insert mode - inserting/appending text:
 
 Ctrl + h - delete the character before the cursor during insert mode
 Ctrl + w - delete word before the cursor during insert mode
+Ctrl + u - delete all the characters before the cursor in the current line, preserves indentation if any
 Ctrl/Shift Left/Right - To move one word left/right
 Ctrl + a - will insert the last word typed during last insert mode
 Ctrl + y - will duplicate the line above the cursor char by char
@@ -133,33 +146,36 @@ Ctrl + rx - insert the contents of register x
 
 Text Objects: (a-z)
 -------------
- a - Arguments
- b - Brackets (various)
- c - Comments
- d - Docstrings
- e - Examples (Code Fences)
- f - Functions
- g - Git Chunk
- gn - Go Next (Aside)
- h - Left Character (ch{char to replace}, d3h)
- i - Indentation Level
- j - Junction of next word segment
- k - Opposite of j
- l - Character object to right
- m - Modified
- n - Number
+a - Arguments
+b - Brackets (various)
+c - Comments
+d - Docstrings
+e - Examples (Code Fences)
+f - Functions
+g - Git Chunk
+gn - Go Next (Aside)
+h - Left Character (ch{char to replace}, d3h)
+i - Indentation Level
+j - Junction of next word segment
+k - Opposite of j
+l - Character object to right
+m - Modified
+n - Number
  o - Objects (classes)
- p - Paragraph
- q - Quotes
- r - README headers
- s - Sentences
- t - Tags
- un - Universe
- v - Value (in key-value pairs)
- w - Word
- x - HTML/XML attributes
- y - Y-dimension blank lines
- z - Key in key/value pairs
+p - Paragraph
+q - Quotes
+r - README headers
+s - Sentences
+t - Tags
+un - Universe
+v - Value (in key-value pairs)
+w - Word
+x - HTML/XML attributes
+y - Y-dimension blank lines
+z - Key in key/value pairs
+} --> To jump between paragraphs.
+) --> To jump between sentences.
+
 
 Visual Mode
 -----------
@@ -169,24 +185,30 @@ ctrl + v ----> visual block
 
 vi( --> selects the content inside the enclosing character used
 vip --> select a paragraph
-In visual mode, to increment a column or lines of number based on the previous number use (g ctrl + a)
+:norm/norm! --> Most useful in visual line mode to apply normal mode commands to multiple lines (eg. A +). 
+                Note: to exit out of insert mode ^[ special character to be used by pressing ctrl+v Esc (eg. norm A,^[J)
+
+Find and Replace
+----------------
+:/^\s*$/d or :g/^$/d --> To find and remove empty lines in a file 
+:g/word to find/norm (any normal mode commands) --> To perform normal mode bindings on the founded occurance of words
+:%s/old/new/g --> Replace everywhere in file
+:s/old/new/g --> Replace everywhere in the selected line
+If there is a space in the search use \+ --> /export\+ PATH
+To search for space character, use \s (eg. :%s/\s/, /g)
 
 Command mode:
 ------------
 :map --> to view the mappings (use nmap, imap to view mappings of a specific mode)
 :r! any shell command --> will read the output of the command and paste it in the current opened file (default shell of the an os will be used eg. windows - cmd, linux - bash). 
 :e --> to open a new file in the same tab
+:e# --> switch back to the previous buffer, won't work if that buffer is not named
 :!!sh --> Type any linux command in the file, and to replace the command with its output 
 :!sort --> In Visual mode, Select a number values column and to sort it use 
 :sav --> To rename a file within editor  filename.file_extension (Note that it will create a copy of the current file in editor)
 :vs path to file --> Vertical split a file 
 :sp path to file --> Horizontal split a file 
-:/^\s*$/d or :g/^$/d --> To find and remove empty lines in a file 
 :noh --> To remove highlights after a search 
-:g/word to find/norm! (any normal mode commands) --> To perform normal mode bindings on the founded occurance of words
-:%s/old/new/g --> Replace everywhere in file
-:s/old/new/g --> Replace everywhere in the selected line
-:norm --> Most useful in visual line mode to apply normal mode commands to multiple lines (eg. A +)
 :earlier 1m,5m,10m --> To undo changes to last x time
 :later  1m,5m,10m --> To redo changes to future x time
 :iabbrev/:iab AK Ajay Krishna R --> To abbreviate a keyword using space key. It can be defined in the init.lua file as well
@@ -194,8 +216,7 @@ Command mode:
           --> To use an diagraph (Ca is mapped to ©) ctrl + kCa
 
 Help:
-____
-
+----
 :help d
 :help deleting
 :help CTRL-A
@@ -219,26 +240,26 @@ Others
 ------
 [[ --> alternate binding for gg (Go to first line in file)
 ]] --> alternate binding for ctrl + G (Go to last line in file)
-} --> To jump between paragraphs.
-) --> To jump between sentences.
+>> --> Indent the current line
+<< --> De-Indent the current line
+>k --> indent the current line and the line above
+>j --> indent the current line and the line below
+>} --> indent till the end of the paragraph
 ctrl + o --> move the cursor way back to historical placeholders (Jump List)
 ctrl + i --> move the cursor forward from historical placeholders to current placeholder (Jump List)
 J --> to join the below line with space in between
 r <Enter> --> Will break the line from current cursor position to next line
-If there is a space in the search use \+ --> /export\+ PATH
 # --> search the word under cursor backwards
 * --> search the word under cursor forwards
-qa --> to start recording @a
-q --> to stop recording
 ma --> set current position for mark A
 `a --> jump to position of mark A
 y`a --> yank text to position of mark A
-50@a --> to repeat action recorded @a 50 times
-@@ --> To repeat the last macro used
 ctrl + a --> to increment a number
 ctrl + x --> to decrement a number
+To increment a column or lines of number based on the previous number use (g ctrl + a)
+5 followed by ctrl + a, will add 5 to the number under cursor (vice versa for ctrl + x)
 ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
-:reg[isters] - show registers content
+
 
 Supermacy of 'g'
 ---------------
@@ -250,9 +271,16 @@ gx --> open link under cursor in default browser
 gf --> when the cursor is under any file name or path to file it will open in a sep window and will have option to close and back to original editor
 gv --> When any word or group of words is selected, use this to go back to the selection from anywhere in the file
 gi --> go to last insert mode used position
+g; --> go to the previous change location (normal)
+g, --> go to the newer change location
 gn --> go to the last search pattern forward, defaults to visual mode. Can be used with any normal commands like dgn (delete next matched word forward)
 gJ --> Join lines without space in between
+gm --> move to the middle of the current screen line (based on screen width)
+gM --> move to the middle of the current line
 g& --> if we run a subsititute query in one line, later if decide to run the same query for whole document, Use this. 
-Note that the sub query you need to run again should be the one executed recently
+       Note that the sub query you need to run again should be the one executed recently
 gg=G --> Indent the whole file
 ggdG --> Delete whole file contents
+Ctrl+g --> display file information like name, number of lines, etc at the bottom of the screen
+g followed by Ctrl+g display information about the current location of the cursor (column, line, word, character and byte counts)
+ga --> shows the codepoint value of the character under the cursor in decimal, octal and hexadecimal formats
