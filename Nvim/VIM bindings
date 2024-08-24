@@ -116,6 +116,7 @@ Insert mode - inserting/appending text:
 --> O - append (open) a new line above the current line
 --> ea - insert (append) at the end of the word
 --> Ctrl + ox - Temporarily enter normal mode to issue one normal-mode command x.
+--> jj (Fast press) from insert mode will change to normal without reaching to esc key.
 --> Esc - exit insert mode
 
 Ctrl + h - delete the character before the cursor during insert mode
@@ -130,11 +131,45 @@ Ctrl + n - insert (auto-complete) next match before the cursor during insert mod
 Ctrl + p - insert (auto-complete) previous match before the cursor during insert mode
 Ctrl + rx - insert the contents of register x
 
+Text Objects: (a-z)
+-------------
+ a - Arguments
+ b - Brackets (various)
+ c - Comments
+ d - Docstrings
+ e - Examples (Code Fences)
+ f - Functions
+ g - Git Chunk
+ gn - Go Next (Aside)
+ h - Left Character (ch{char to replace}, d3h)
+ i - Indentation Level
+ j - Junction of next word segment
+ k - Opposite of j
+ l - Character object to right
+ m - Modified
+ n - Number
+ o - Objects (classes)
+ p - Paragraph
+ q - Quotes
+ r - README headers
+ s - Sentences
+ t - Tags
+ un - Universe
+ v - Value (in key-value pairs)
+ w - Word
+ x - HTML/XML attributes
+ y - Y-dimension blank lines
+ z - Key in key/value pairs
+
 Visual Mode
 -----------
 v
 shift + v ----> visual line
 ctrl + v ----> visual block
+
+vi( --> selects the content inside the enclosing character used
+vip --> select a paragraph
+In visual mode, to increment a column or lines of number based on the previous number use (g ctrl + a)
 
 Command mode:
 ------------
@@ -182,15 +217,15 @@ To persist the folds after reopening the file --> :mkview :loadview
 
 Others
 ------
-[[ --> alternate binding for gg (Go to top of file, ie line 1)
+[[ --> alternate binding for gg (Go to first line in file)
 ]] --> alternate binding for ctrl + G (Go to last line in file)
+} --> To jump between paragraphs.
+) --> To jump between sentences.
 ctrl + o --> move the cursor way back to historical placeholders (Jump List)
 ctrl + i --> move the cursor forward from historical placeholders to current placeholder (Jump List)
 J --> to join the below line with space in between
 r <Enter> --> Will break the line from current cursor position to next line
 If there is a space in the search use \+ --> /export\+ PATH
-vi( --> selects the content inside the enclosing character used
-vip --> select a paragraph
 # --> search the word under cursor backwards
 * --> search the word under cursor forwards
 qa --> to start recording @a
@@ -199,9 +234,9 @@ ma --> set current position for mark A
 `a --> jump to position of mark A
 y`a --> yank text to position of mark A
 50@a --> to repeat action recorded @a 50 times
+@@ --> To repeat the last macro used
 ctrl + a --> to increment a number
 ctrl + x --> to decrement a number
-In visual mode, to increment a column or lines of number based on the previous number use (g ctrl + a)
 ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
 :reg[isters] - show registers content
 
@@ -215,6 +250,7 @@ gx --> open link under cursor in default browser
 gf --> when the cursor is under any file name or path to file it will open in a sep window and will have option to close and back to original editor
 gv --> When any word or group of words is selected, use this to go back to the selection from anywhere in the file
 gi --> go to last insert mode used position
+gn --> go to the last search pattern forward, defaults to visual mode. Can be used with any normal commands like dgn (delete next matched word forward)
 gJ --> Join lines without space in between
 g& --> if we run a subsititute query in one line, later if decide to run the same query for whole document, Use this. 
 Note that the sub query you need to run again should be the one executed recently
