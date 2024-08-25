@@ -12,6 +12,21 @@ L - move to bottom of screen
 
 zz, zt, zb --> move current line to middle/top/bottom of screen
 
+Buffers & Tabs:
+--------------
+:e# --> switch back to the previous buffer, won't work if that buffer is not named
+Ctrl+6 / Ctrl+^ --> switch back to the previous buffer, works even if that buffer is not named
+:e #1 --> open the first buffer
+:buffers or :ls or :files --> show all buffers
+:bn --> open the next file in the buffer list. opens the first buffer if you are on the last buffer (Buffer Next)
+:bp --> open the previous file in the buffer list. opens the last buffer if you are on the first buffer (Buffer Previous)
+
+:tabe --> filename open the given file in a new tab (Tab Edit)
+:tabm 0 --> move the current tab to the beginning
+:tabm --> move the current tab to the end
+:tabm +N --> move the current tab N positions to the right
+:tabm -N --> move the current tab N positions to the left
+
 Word Movements:
 --------------
 --> w - jump forwards to the start of a word
@@ -117,6 +132,13 @@ Delete, Yank, Change:
 --> x - delete (cut) character under the cursor. Same as dl
 --> X - delete (cut) character before the cursor. Same as dh
 --> dG - delete entire file from current line
+--> :5d - delete the fifth line
+--> :$d - delete the last line (represented by $)
+--> :25m0 - move the twenty-fifth line to the start of the file (:m is short for the :move command) use :t (or :co or :copy) command if you want to copy instead of moving
+--> :2,10d - delete the second to tenth lines (comma is used here to separate the start and end ranges)
+--> :5,$d - delete the fifth line to the last line
+--> :5,$-1d - delete the fifth line to the last but one line
+--> :%d - delete all the lines (% is a shortcut for the 1,$ range). Recall that % is a shortcut for the range 1,$
 
 Insert mode - inserting/appending text:
 --------------------------------------
@@ -191,16 +213,42 @@ vip --> select a paragraph
 Find and Replace
 ----------------
 :/^\s*$/d or :g/^$/d --> To find and remove empty lines in a file 
-:g/word to find/norm (any normal mode commands) --> To perform normal mode bindings on the founded occurance of words
+:g/word_to_find/norm (any normal mode commands) --> To perform normal mode bindings on the founded occurance of words
+:g/call/d _ --> deleted content won't be saved anywhere, since it uses the black hole register
+
+:g/^#/t0 --> copy all lines starting with # to the start of the file
+:1,5 g/call/d --> delete all lines containing call only for the first five lines
+:v/jump/d --> delete all lines not containing jump. same as :g!/jump/d
+:g/cat/ s/animal/mammal/g  -> replace animal with mammal only for the lines containing cat
+:.,.+20 g/^#/ normal >> --> indent the current line and the next 20 lines only if the line starts with #
+
 :%s/old/new/g --> Replace everywhere in file
 :s/old/new/g --> Replace everywhere in the selected line
+:2 s/apple/Mango/i --> replace the first occurrence of apple with Mango on the second line only. i flag matches the searchpattern case insensitively
+:3,6 s/call/jump/g --> replace all the occurrences of call with jump on lines 3 to 6. g flag performs search and replace for all the matching occurrences
 If there is a space in the search use \+ --> /export\+ PATH
 To search for space character, use \s (eg. :%s/\s/, /g)
+
+/searchpattern/s+2 --> place the cursor 2 characters after the start of the match (i.e. the third character of the match)
+/searchpattern/s-2 --> place the cursor 2 characters before the start of the match
+/searchpattern/e --> place the cursor at the end of the match
+/searchpattern/e+4 --> place the cursor 4 characters after the end of the match
+/searchpattern/e-4 --> place the cursor 4 characters before the end of the match
+/searchpattern/+3 --> place the cursor 3 lines below the match
+/searchpattern/-3 --> place the cursor 3 lines above the match
+//s+3 to repeat the last search with this new offset
+
 
 Command mode:
 ------------
 :map --> to view the mappings (use nmap, imap to view mappings of a specific mode)
-:r! any shell command --> will read the output of the command and paste it in the current opened file (default shell of the an os will be used eg. windows - cmd, linux - bash). 
+:r! any shell command --> will read the output of the command and paste it below current line (default shell of the an os will be used eg. windows - cmd, linux - bash).
+:r report.log insert contents of the given file below the current line (! represents shell command, without it represents built in command)
+:!ls execute the given shell command and display its output. The results are displayed as part of an expanded Command-line area, doesn't change contents of the file.
+:.! date replace the current line with the output of the given command. Pressing !! in Normal mode will also result in :.!
+:%! sort sort all the lines. note that this executes an external command, not the built-in :sort command
+:3,8! sort sort only lines 3 to 8
+:.!grep '^Help ' % replace the current line with all the lines starting with Help in the current file
 :e --> to open a new file in the same tab
 :e# --> switch back to the previous buffer, won't work if that buffer is not named
 :!!sh --> Type any linux command in the file, and to replace the command with its output 
