@@ -27,65 +27,14 @@ Ctrl+6 / Ctrl+^ --> switch back to the previous buffer, works even if that buffe
 :tabm +N --> move the current tab N positions to the right
 :tabm -N --> move the current tab N positions to the left
 
-Word Movements:
---------------
---> w - jump forwards to the start of a word
---> e - jump forwards to the end of a word
---> b - jump backwards to the start of a word
---> ge - jump backwards to the end of a word
-
-W - jump forwards to the start of a word (words can contain punctuation)
-E - jump forwards to the end of a word (words can contain punctuation)
-B - jump backwards to the start of a word (words can contain punctuation)
-gE - jump backwards to the end of a word (words can contain punctuation)
-
-Cut and paste:
---------------
---> yy - yank (copy) a line
---> 2yy or yj / yk - yank (copy) 2 lines
---> yl copy the character under the cursor
---> yw - yank (copy) the characters of the word from the cursor position to the start of the next word
---> yaw - yank (copy) word under the cursor and the space after or before it
---> yiw / yiW - yank a word from any cursor position in the word
---> y$ or Y - yank (copy) to end of line
---> p - put (paste) the clipboard after cursor
---> P - put (paste) before cursor
-gp - put (paste) the clipboard after cursor and leave cursor after the new text
-gP - put (paste) before cursor and leave cursor after the new text
-"xy - yank into register x
-"xp - paste contents of register x
-"+y - yank into the system clipboard register
-"+p - paste from the system clipboard register
-
-Replace or change bindings:
----------------------------
-r/3ra - replace a single/multiple character(s).
-R - replace more than one character, until ESC is pressed.
-cc - change (replace) entire line
-c$ or C - change (replace) to the end of the line
-ciw - change (replace) inner word (cursor in any position of the word)
-ci" - change the content inside any surround characters like ()[]{}""''  "<your-content>"
-cw or ce - change (replace) to the end of the word
-xp - transpose two letters (delete and paste)
-
-diw - delete inner word (cursor in any position of the word)
-d) delete up to the end of the sentence
-s - delete character and substitute text
-S - delete line and substitute text (same as cc)
-
-
-Find characters in a line 
--------------------------
-f {character to navigate} --> Move forward to the first occurance of the character
-F {character to navigate} --> Move backwards to the first occurance of the character
-
-t {character to navigate} --> Move forward to character before the first occurance of the serached character
-T {character to navigate} --> Move backwards to character before the first occurance of the serached character
-
-; --> Move forward to the next occurance of the character. Works only for the last character found using find
-, --> Move backwards to the next occurance of the character. Works only for the last character found using fin
-
-vf {character to navigate} --> start selection from current currsor position to the 1st occurance of the character
+Sessions:
+---------
+:mksession --> proj.vim save the current Vim session with details like cursor position, file list, layout, etc 
+               you can customize things to be saved using the sessionoptions setting
+               for example, :set sessionoptions+=resize will save resized window information as well
+:mksession! --> proj.vim overwrite existing session
+:source proj.vim --> restore Vim session from proj.vim file
+vim -S proj.vim --> restore a session from the command line when launching Vim
 
 Registers:
 ----------
@@ -100,10 +49,11 @@ Registers:
 9. The selection registers "* and "+
 10. Last search pattern register "/ 
 
-To edit the contents of a register --> 
+To edit/empty the contents of a register --> 
        :let @a='' (To edit an existing macro ctrl+r a, to paste the contents of register) - Method 1
        paste the contents of the regsiter (eg. "ap) and edit the content then yank it back to "a" register (eg. "ay) - Method 2
        qA{commands to append} --> Will append to the existing macro
+       You can record an empty macro to clear the contents, for example qbq clears the "b register.
 
 qa --> to start recording @a
 q --> to stop recording
@@ -111,6 +61,18 @@ q --> to stop recording
 @@ --> To repeat the last macro used
 qA -->
 :reg[isters] - show registers content
+
+Word Movements:
+--------------
+--> w - jump forwards to the start of a word
+--> e - jump forwards to the end of a word
+--> b - jump backwards to the start of a word
+--> ge - jump backwards to the end of a word
+
+W - jump forwards to the start of a word (words can contain punctuation)
+E - jump forwards to the end of a word (words can contain punctuation)
+B - jump backwards to the start of a word (words can contain punctuation)
+gE - jump backwards to the end of a word (words can contain punctuation)
 
 Delete, Yank, Change:
 --------------------
@@ -140,6 +102,89 @@ Delete, Yank, Change:
 --> :5,$-1d - delete the fifth line to the last but one line
 --> :%d - delete all the lines (% is a shortcut for the 1,$ range). Recall that % is a shortcut for the range 1,$
 
+Cut and paste:
+--------------
+--> yy - yank (copy) a line
+--> 2yy or yj / yk - yank (copy) 2 lines
+--> yl copy the character under the cursor
+--> yw - yank (copy) the characters of the word from the cursor position to the start of the next word
+--> yaw - yank (copy) word under the cursor and the space after or before it
+--> yiw / yiW - yank a word from any cursor position in the word
+--> y$ or Y - yank (copy) to end of line
+--> p - put (paste) the clipboard after cursor
+--> P - put (paste) before cursor
+--> :put - pastes the content after current line
+--> :put! - pastes the content before current line
+--> ]p - paste the copied content like p command, but changes the indentation level to match the current line
+--> [p - paste the copied content like P command, but changes the indentation level to match the current line
+--> gp - put (paste) the clipboard after cursor and leave cursor after the new text
+--> gP - put (paste) before cursor and leave cursor after the new text
+"xy - yank into register x
+"xp - paste contents of register x
+"+y - yank into the system clipboard register
+"+p - paste from the system clipboard register
+
+Replace or change bindings:
+---------------------------
+r/3ra - replace a single/multiple character(s).
+R - replace more than one character, until ESC is pressed.
+cc - change (replace) entire line
+c$ or C - change (replace) to the end of the line
+ciw - change (replace) inner word (cursor in any position of the word)
+ci" - change the content inside any surround characters like ()[]{}""''  "<your-content>"
+cw or ce - change (replace) to the end of the word
+xp - transpose two letters (delete and paste)
+
+diw - delete inner word (cursor in any position of the word)
+d) delete up to the end of the sentence
+s - delete character and substitute text
+S - delete line and substitute text (same as cc)
+
+Find characters in a line 
+-------------------------
+f {character to navigate} --> Move forward to the first occurance of the character
+F {character to navigate} --> Move backwards to the first occurance of the character
+
+t {character to navigate} --> Move forward to character before the first occurance of the serached character
+T {character to navigate} --> Move backwards to character before the first occurance of the serached character
+
+; --> Move forward to the next occurance of the character. Works only for the last character found using find
+, --> Move backwards to the next occurance of the character. Works only for the last character found using fin
+
+vf {character to navigate} --> start selection from current currsor position to the 1st occurance of the character
+
+Text Objects: (a-z)
+-------------
+a - Arguments
+b - Brackets (various)
+c - Comments
+d - Docstrings
+e - Examples (Code Fences)
+f - Functions
+g - Git Chunk
+gn - Go Next (Aside)
+h - Left Character (ch{char to replace}, d3h)
+i - Indentation Level
+j - Junction of next word segment
+k - Opposite of j
+l - Character object to right
+m - Modified
+n - Number
+o - Objects (classes)
+p - Paragraph
+q - Quotes
+r - README headers
+s - Sentences
+t - Tags
+un - Universe
+v - Value (in key-value pairs)
+w - Word
+x - HTML/XML attributes
+y - Y-dimension blank lines
+z - Key in key/value pairs
+} --> To jump between paragraphs.
+) --> To jump between sentences.
+
 Insert mode - inserting/appending text:
 --------------------------------------
 --> i - insert (append) at the current cursor position before the character
@@ -166,39 +211,6 @@ Ctrl + n - insert (auto-complete) next match before the cursor during insert mod
 Ctrl + p - insert (auto-complete) previous match before the cursor during insert mode
 Ctrl + rx - insert the contents of register x
 
-Text Objects: (a-z)
--------------
-a - Arguments
-b - Brackets (various)
-c - Comments
-d - Docstrings
-e - Examples (Code Fences)
-f - Functions
-g - Git Chunk
-gn - Go Next (Aside)
-h - Left Character (ch{char to replace}, d3h)
-i - Indentation Level
-j - Junction of next word segment
-k - Opposite of j
-l - Character object to right
-m - Modified
-n - Number
- o - Objects (classes)
-p - Paragraph
-q - Quotes
-r - README headers
-s - Sentences
-t - Tags
-un - Universe
-v - Value (in key-value pairs)
-w - Word
-x - HTML/XML attributes
-y - Y-dimension blank lines
-z - Key in key/value pairs
-} --> To jump between paragraphs.
-) --> To jump between sentences.
-
-
 Visual Mode
 -----------
 v
@@ -212,6 +224,16 @@ vip --> select a paragraph
 
 Find and Replace
 ----------------
+
+Flags: (These flags are applicable for the substitute command but not the / or ? searches)
+******
+g --> replace all occurrences within a matching line. by default, only the first matching portion will be replaced
+c --> ask for confirmation before each replacement
+i --> ignore case for searchpattern
+I --> don't ignore case for searchpattern
+
+# --> search the word under cursor backwards
+* --> search the word under cursor forwards
 :/^\s*$/d or :g/^$/d --> To find and remove empty lines in a file 
 :g/word_to_find/norm (any normal mode commands) --> To perform normal mode bindings on the founded occurance of words
 :g/call/d _ --> deleted content won't be saved anywhere, since it uses the black hole register
@@ -297,14 +319,13 @@ ctrl + o --> move the cursor way back to historical placeholders (Jump List)
 ctrl + i --> move the cursor forward from historical placeholders to current placeholder (Jump List)
 J --> to join the below line with space in between
 r <Enter> --> Will break the line from current cursor position to next line
-# --> search the word under cursor backwards
-* --> search the word under cursor forwards
 ma --> set current position for mark A
 `a --> jump to position of mark A
 y`a --> yank text to position of mark A
 ctrl + a --> to increment a number
 ctrl + x --> to decrement a number
 To increment a column or lines of number based on the previous number use (g ctrl + a)
+2g followed by Ctrl+a increment by 2 for the first line, by 4 for the second line, by 6 for the third line and so on
 5 followed by ctrl + a, will add 5 to the number under cursor (vice versa for ctrl + x)
 ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
 
@@ -330,5 +351,5 @@ g& --> if we run a subsititute query in one line, later if decide to run the sam
 gg=G --> Indent the whole file
 ggdG --> Delete whole file contents
 Ctrl+g --> display file information like name, number of lines, etc at the bottom of the screen
-g followed by Ctrl+g display information about the current location of the cursor (column, line, word, character and byte counts)
+           g followed by Ctrl+g display information about the current location of the cursor (column, line, word, character and byte counts)
 ga --> shows the codepoint value of the character under the cursor in decimal, octal and hexadecimal formats
