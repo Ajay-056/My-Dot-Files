@@ -59,7 +59,6 @@ qa --> to start recording @a
 q --> to stop recording
 50@a --> to repeat action recorded @a 50 times
 @@ --> To repeat the last macro used
-qA -->
 :reg[isters] - show registers content
 
 Word Movements:
