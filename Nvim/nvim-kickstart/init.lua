@@ -10,7 +10,9 @@ vim.g.have_nerd_font = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- Install package manager
+-- vim.api.nvim_exec('autocmd VimEnter * startinsert', false)
+
+-- Install lua package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -77,6 +79,105 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
+  { -- You can easily change to a different colorscheme.
+    -- Change the name of the colorscheme plugin below, and then
+    -- change the command in the config to whatever the name of that colorscheme is.
+    --
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    'folke/tokyonight.nvim',
+    priority = 1000, -- Make sure to load this before all the other start plugins.
+    init = function()
+      -- Load the colorscheme here.
+      -- Like many other themes, this one has different styles, and you could load
+      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      vim.cmd.colorscheme 'tokyonight-night'
+
+      -- You can configure highlights by doing something like:
+      vim.cmd.hi 'Comment gui=none'
+    end,
+  },
+  {
+    'm4xshen/hardtime.nvim',
+    -- event = 'VeryLazy',
+    dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
+    opts = {
+      disabled_keys = {
+        ["<Up>"] = { "n" },
+        ["<Down>"] = { "n" },
+        ["<Left>"] = { "n" },
+        ["<Right>"] = { "n" },
+      },
+    },
+  },
+
+  {
+    "ggandor/leap.nvim",
+    event = "BufEnter",
+  },
+
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      columns = {
+        "icon",
+        "permissions",
+        "size",
+        "mtime",
+      },
+      watch_for_changes = true,
+      skip_confirm_for_simple_edits = true,
+
+      view_options = {
+        -- Show files and directories that start with "."
+        show_hidden = true,
+
+      }
+    },
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
+
+  {
+    "chrishrb/gx.nvim",
+    keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+    cmd = { "Browse" },
+    init = function()
+      vim.g.netrw_nogx = 1 -- disable netrw gx
+    end,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = true,      -- default settings
+    submodules = false, -- not needed, submodules are required only for tests
+  },
+
+  -- {
+  --   'tris203/precognition.nvim',
+  --   event = 'VeryLazy',
+  --   config = {
+  --     -- startVisible = true,
+  --     -- showBlankVirtLine = true,
+  --     -- highlightColor = { link = "Comment" },
+  --     -- hints = {
+  --     --      Caret = { text = "^", prio = 2 },
+  --     --      Dollar = { text = "$", prio = 1 },
+  --     --      MatchingPair = { text = "%", prio = 5 },
+  --     --      Zero = { text = "0", prio = 1 },
+  --     --      w = { text = "w", prio = 10 },
+  --     --      b = { text = "b", prio = 9 },
+  --     --      e = { text = "e", prio = 8 },
+  --     --      W = { text = "W", prio = 7 },
+  --     --      B = { text = "B", prio = 6 },
+  --     --      E = { text = "E", prio = 5 },
+  --     -- },
+  --     -- gutterHints = {
+  --     --     G = { text = "G", prio = 10 },
+  --     --     gg = { text = "gg", prio = 9 },
+  --     --     PrevParagraph = { text = "{", prio = 8 },
+  --     --     NextParagraph = { text = "}", prio = 8 },
+  --     -- },
+  --   },
+  -- },
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',  opts = {} },
@@ -185,6 +286,8 @@ require('lazy').setup({
 -- :NOTE Abbreviations
 vim.cmd('abbreviate ak Ajay Krishna R')
 vim.cmd('abbreviate hw Hello World!')
+vim.cmd(
+  'abbreviate lor Lorem ipsum odor amet, consectetuer adipiscing elit. Penatibus aenean senectus sapien nostra, luctus ex feugiat. Bibendum sem gravida consectetur non tristique. Scelerisque pharetra sapien mattis finibus nulla. Egestas natoque non laoreet, fermentum pharetra faucibus. Ex nascetur enim eget tristique justo hac finibus a. Phasellus fermentum quis tristique justo nascetur consectetur adipiscing facilisis aliquet. Suspendisse vestibulum penatibus nam quam quisque malesuada.')
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -195,6 +298,11 @@ vim.o.mouse = 'a'
 vim.opt.foldcolumn = "2"
 vim.opt.foldopen = "all"
 vim.opt.foldclose = "all"
+
+vim.opt.shell = 'pwsh'
+vim.opt.shellcmdflag = '-nologo -noprofile -ExecutionPolicy RemoteSigned -command'
+vim.opt.shellxquote = ''
+
 -- Sync clipboard between OS and Neovim.
 vim.o.clipboard = 'unnamedplus'
 -- Enable break indent
@@ -219,8 +327,18 @@ vim.opt.undodir = vim.fn.expand '~/.vim/undodir'
 vim.opt.undofile = true
 vim.wo.relativenumber = true
 vim.opt.spell = true
+vim.opt.splitright = true
+
+vim.keymap.set('n', 's', '<Plug>(leap)')
+vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
+vim.keymap.set({ 'x', 'o' }, 's', '<Plug>(leap-forward)')
+vim.keymap.set({ 'x', 'o' }, 'S', '<Plug>(leap-backward)')
+
+vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+
 -- [[ Basic Keymaps ]]
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.keymap.set({ 'n' }, '<Leader>s', '<cmd>luafile %<CR>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -255,12 +373,13 @@ require('telescope').setup {
     file_ignore_patterns = { '^./.git/', '^node_modules/', '^vendor/', '%.jpg', '%.png' },
   },
 }
+local builtin = require 'telescope.builtin'
+
 -- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
--- File browser plugin for telescope
-require('telescope').load_extension 'file_browser'
+pcall(builtin.load_extension, 'fzf')
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+pcall(builtin.load_extension, 'ui-select')
+-- vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 --vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -270,16 +389,33 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
-vim.keymap.set('n', '<leader>sn', function()
-  require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' }
+-- See `:help telescope.builtin`
+vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+vim.keymap.set('n', '<leader>ff', builtin.find_files)
+vim.keymap.set('n', '<leader>fb', builtin.builtin)
+vim.keymap.set('n', '<leader>lg', builtin.live_grep)
+vim.keymap.set('n', '<leader>sb', builtin.buffers)
+-- vim.keymap.set('n', '<leader>fb', builtin.file_browser)
+vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>hs', builtin.help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>ws', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>ds', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>cs', function()
+  builtin.find_files { cwd = vim.fn.stdpath 'config' }
 end, { desc = '[S]earch [N]eovim files' })
+
+-- vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+-- vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+-- vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+-- vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+-- vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+-- vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+--
+-- vim.keymap.set('n', '<leader>sn', function()
+--   require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' }
+-- end, { desc = '[S]earch [N]eovim files' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -542,17 +678,19 @@ require('telescope').setup {
   },
 }
 
-require('synthwave84').setup {
-  glow = {
-    error_msg = true,
-    type2 = true,
-    func = true,
-    keyword = true,
-    operator = false,
-    buffer_current_target = true,
-    buffer_visible_target = true,
-    buffer_inactive_target = true,
-  },
-}
 
-vim.cmd [[colorscheme synthwave84]]
+
+-- require('synthwave84').setup {
+--   glow = {
+--     error_msg = true,
+--     type2 = true,
+--     func = true,
+--     keyword = true,
+--     operator = false,
+--     buffer_current_target = true,
+--     buffer_visible_target = true,
+--     buffer_inactive_target = true,
+--   },
+-- }
+--
+-- vim.cmd [[colorscheme synthwave84]]
