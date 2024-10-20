@@ -336,7 +336,25 @@ Supermacy of 'g'
 gj, gk --> To go line by line in a big paragraph. we can remap j and k to gj and gk
 g0,g$ --> To go to start or end of current line in a paragraph
 gqq (last q is text object),gq5j --> to auto format the paragraph. can be mapped to Q
-gu, gU, gu$, guu, gU3w, gUU, gUfl, ~, g~ --> capitalize and un cap
+
+~    : Changes the case of current character
+guu  : Change current line from upper to lower.
+gUU  : Change current LINE from lower to upper.
+gu$  : change case to lower from current cursor position to end of the current line 
+gU3w : change case to upper from current word +2
+gUfl : change case to upper from current cursor till the find character (l in this case)
+guw  : Change to end of current WORD from upper to lower.
+guaw : Change all of current WORD to lower.
+gUw  : Change to end of current WORD from lower to upper.
+gUaw : Change all of current WORD to upper.
+g~~  : Invert case to entire line
+g~w  : Invert case to current WORD
+guG  : Change to lowercase until the end of document.
+gU)  : Change until end of sentence to upper case
+gu}  : Change to end of paragraph to lower case
+gU5j : Change 5 lines below to upper case
+gu3k : Change 3 lines above to lower case
+
 gx --> open link under cursor in default browser
 gf --> when the cursor is under any file name or path to file it will open in a sep window and will have option to close and back to original editor
 gv --> When any word or group of words is selected, use this to go back to the selection from anywhere in the file
