@@ -17,6 +17,7 @@ Buffers & Tabs:
 :e# --> switch back to the previous buffer, won't work if that buffer is not named
 Ctrl+6 / Ctrl+^ --> switch back to the previous buffer, works even if that buffer is not named
 :e #1 --> open the first buffer
+:e {filename} --> to open a new file in the same tab
 :buffers or :ls or :files --> show all buffers
 :bn --> open the next file in the buffer list. opens the first buffer if you are on the last buffer (Buffer Next)
 :bp --> open the previous file in the buffer list. opens the last buffer if you are on the first buffer (Buffer Previous)
@@ -259,7 +260,6 @@ To search for space character, use \s (eg. :%s/\s/, /g)
 /searchpattern/-3 --> place the cursor 3 lines above the match
 //s+3 to repeat the last search with this new offset
 
-
 Command mode:
 ------------
 :map --> to view the mappings (use nmap, imap to view mappings of a specific mode)
@@ -270,8 +270,7 @@ Command mode:
 :%! sort sort all the lines. note that this executes an external command, not the built-in :sort command
 :3,8! sort sort only lines 3 to 8
 :.!grep '^Help ' % replace the current line with all the lines starting with Help in the current file
-:e --> to open a new file in the same tab
-:e# --> switch back to the previous buffer, won't work if that buffer is not named
+
 :!!sh --> Type any linux command in the file, and to replace the command with its output 
 :!sort --> In Visual mode, Select a number values column and to sort it use 
 :sav --> To rename a file within editor  filename.file_extension (Note that it will create a copy of the current file in editor)
