@@ -80,3 +80,8 @@ keymap("n", "<Leader>c", "<cmd> tabclose<CR>", opts)
 keymap("n", "<C-q>", "<cmd> q!<CR>", opts)
 keymap("n", "<C-w>", "<cmd> wq<CR>", opts)
 keymap("n", "<Leader><enter>>", "<cmd>.!zshq<CR>", opts)
+
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "n", "nzz", opts)
+keymap("n", "N", "Nzz", opts)
