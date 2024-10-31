@@ -41,15 +41,28 @@ vim -S proj.vim --> restore a session from the command line when launching Vim
 
 Registers:
 ----------
-1. The unnamed register ""
-2. 10 numbered registers "0 to "9 (0 will always have the last deleted/yanked content, it will work like stack)
-3. The small delete register "-
+1. The unnamed register "" (will always have the contents of last x,s,d,c,y)
+2. 10 numbered registers "0 to "9 (0 will always have the last yanked content and 1 will always have the last deleted content, 1-9 will work like stack)
+3. The small delete register "- (Last deleted content other than the entire line will be stored. eg dw)
 4. 26 named registers "a to "z or "A to "Z
-5. Three read-only registers ": (Last used command) ". (Last insert mode text) "% (current file)
+5. Three read-only registers ": (Last used command) ". (Last insert mode text) "% (current file)'
+        a. h file-modifiers
+        %:p Make file name a full path
+        %:h Head of the Filename
+        %:t Tail of the Filename
+        %:r Root
+        %:e Extension
 6. Alternate buffer register "# (Contains last opened file) use ctrl + 6 to switch back and forth
-7. The expression register "=
-8. The black hole register "_
-9. The selection registers "* and "+
+7. The expression register "= (powerful register, used to evaluate an expression)
+        a. help math, help builtin
+        b. toupper("")
+        c. join(range(1,10),",") --> to generate comma seperated sequence number
+        d. system("ls") --> to run any shell command
+        e. toupper(@-) --> to get arguments from another register (- in this case)
+        f. eval(join(split(trim(@0),','), '+')) --> to add a line of comma seperated numbers
+        g. rand(srand()) % 16 --> Record a macro while using the register to repeat the action, the exp will generate random number from 0 to 15
+8. The black hole register "_ (content wont be saved / will be lost. can be used to delete something thats no longer needed)
+9. The selection registers "* (Last text selected using mouse) and "+ (System clipboard)
 10. Last search pattern register "/ 
 
 To edit/empty the contents of a register --> 
@@ -200,18 +213,18 @@ Insert mode - inserting/appending text:
 --> jj (Fast press) from insert mode will change to normal without reaching to esc key.
 --> Esc - exit insert mode
 
-Ctrl + h - delete the character before the cursor during insert mode
+Ctrl + rx - insert the contents of register x
 Ctrl + w - delete word before the cursor during insert mode
 Ctrl + u - delete all the characters before the cursor in the current line, preserves indentation if any
-Ctrl/Shift Left/Right - To move one word left/right
 Ctrl + a - will insert the last word typed during last insert mode
 Ctrl + y - will duplicate the line above the cursor char by char
 Ctrl + j - begin new line during insert mode
+Ctrl + h - delete the character before the cursor during insert mode
 Ctrl + t - indent (move right) line one shiftwidth during insert mode
 Ctrl + d - de-indent (move left) line one shiftwidth during insert mode
+Ctrl/Shift Left/Right - To move one word left/right
 Ctrl + n - insert (auto-complete) next match before the cursor during insert mode
 Ctrl + p - insert (auto-complete) previous match before the cursor during insert mode
-Ctrl + rx - insert the contents of register x
 
 Visual Mode
 -----------
