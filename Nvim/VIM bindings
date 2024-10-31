@@ -16,6 +16,8 @@ Buffers & Tabs:
 --------------
 :e# --> switch back to the previous buffer, won't work if that buffer is not named
 Ctrl+6 / Ctrl+^ --> switch back to the previous buffer, works even if that buffer is not named
+:e! % ---> Refresh current file buffer
+:% !jq --> Pretty print JSON
 :e #1 --> open the first buffer
 :e {filename} --> to open a new file in the same tab
 :buffers or :ls or :files --> show all buffers
@@ -308,6 +310,8 @@ To persist the folds after reopening the file --> :mkview :loadview
 
 Others
 ------
+q: --> open the recent command history in normal mode
+q/ --> open the recent search history in normal mode
 _ --> go to the start of the first character in the line (if indented)
 [[ --> alternate binding for gg (Go to first line in file)
 ]] --> alternate binding for ctrl + G (Go to last line in file)
