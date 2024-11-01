@@ -252,11 +252,10 @@ I --> don't ignore case for searchpattern
 :/^\s*$/d or :g/^$/d --> To find and remove empty lines in a file 
 :g/word_to_find/norm (any normal mode commands) --> To perform normal mode bindings on the founded occurance of words
 :g/call/d _ --> deleted content won't be saved anywhere, since it uses the black hole register
-
 :g/^#/t0 --> copy all lines starting with # to the start of the file
+:g/cat/ s/animal/mammal/g  -> replace animal with mammal only for the lines containing cat
 :1,5 g/call/d --> delete all lines containing call only for the first five lines
 :v/jump/d --> delete all lines not containing jump. same as :g!/jump/d
-:g/cat/ s/animal/mammal/g  -> replace animal with mammal only for the lines containing cat
 :.,.+20 g/^#/ normal >> --> indent the current line and the next 20 lines only if the line starts with #
 
 :%s/old/new/g --> Replace everywhere in file
@@ -296,7 +295,7 @@ Command mode:
 :noh --> To remove highlights after a search 
 :earlier 1m,5m,10m --> To undo changes to last x time
 :later  1m,5m,10m --> To redo changes to future x time
-:iabbrev/:iab AK Ajay Krishna R --> To abbreviate a keyword using space key. It can be defined in the init.lua file as well
+:iabbrev/:iab AK Ajay Krishna R --> To abbreviate a keyword using space key. It can be defined in the init.lua file as well to make it permanent
 :digraphs --> To enter some special characters that are not in the keyboard (Insert Mode)
           --> To use an diagraph (Ca is mapped to ©) ctrl + kCa
 
