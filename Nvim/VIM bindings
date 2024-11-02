@@ -278,17 +278,17 @@ To search for space character, use \s (eg. :%s/\s/, /g)
 
 Command mode:
 ------------
-:map --> to view the mappings (use nmap, imap to view mappings of a specific mode)
-:r! any shell command --> will read the output of the command and paste it below current line (default shell of the an os will be used eg. windows - cmd, linux - bash).
-:r report.log insert contents of the given file below the current line (! represents shell command, without it represents built in command)
 :!ls execute the given shell command and display its output. The results are displayed as part of an expanded Command-line area, doesn't change contents of the file.
+:r report.log insert contents of the given file below the current line (! represents shell command, without it represents built in command)
+:r! any shell command --> will read the output of the command and paste it below current line (default shell of the an os will be used eg. windows - cmd, linux - bash).
 :.! date replace the current line with the output of the given command. Pressing !! in Normal mode will also result in :.!
-:%! sort sort all the lines. note that this executes an external command, not the built-in :sort command
-:3,8! sort sort only lines 3 to 8
-:.!grep '^Help ' % replace the current line with all the lines starting with Help in the current file
-
+:%! sort --> sort all the lines. note that this executes an external command, not the built-in :sort command
+:3,8! sort --> sort only lines 3 to 8
+:.!grep '^Help ' % --> replace the current line with all the lines starting with Help in the current file
 :!!sh --> Type any linux command in the file, and to replace the command with its output 
 :!sort --> In Visual mode, Select a number values column and to sort it use 
+
+:map --> to view the mappings (use nmap, imap to view mappings of a specific mode)
 :sav --> To rename a file within editor  filename.file_extension (Note that it will create a copy of the current file in editor)
 :vs path to file --> Vertical split a file 
 :sp path to file --> Horizontal split a file 
