@@ -17,6 +17,7 @@ Buffers & Tabs:
 :e# --> switch back to the previous buffer, won't work if that buffer is not named
 Ctrl+6 / Ctrl+^ --> switch back to the previous buffer, works even if that buffer is not named
 :e! % ---> Refresh current file buffer
+:up | %bd | e# --> First, this updates your current buffer (saves it). Then it closes all open buffers, then it reopens the last buffer.
 :% !jq --> Pretty print JSON
 :e #1 --> open the first buffer
 :e {filename} --> to open a new file in the same tab
@@ -141,7 +142,7 @@ Cut and paste:
 
 Replace or change bindings:
 ---------------------------
-r/3ra - replace a single/multiple character(s).
+r/3ra - replace a single/multiple character(s). r followed by ctrl+e to replace from the character adjacent to the below line, dame for ctrl+y (above line)
 R - replace more than one character, until ESC is pressed.
 cc - change (replace) entire line
 c$ or C - change (replace) to the end of the line
@@ -322,6 +323,14 @@ To persist the folds after reopening the file --> :mkview :loadview
 
 Others
 ------
+z= --> Show spelling corrections
+zg --> Add to spelling dictionary
+zw --> Remove from spelling dictionary
+]s – Jump to the next misspelled word
+[s – Jump to the previous misspelled word
+`[ --> Jump to beginning of last yanked text
+`] --> Jump to end of last yanked text
+:center [column], :right [column], :left [column] -- will align the line text accordingly
 q: --> open the recent command history in normal mode
 q/ --> open the recent search history in normal mode
 _ --> go to the start of the first character in the line (if indented)
@@ -332,7 +341,7 @@ _ --> go to the start of the first character in the line (if indented)
 >k --> indent the current line and the line above
 >j --> indent the current line and the line below
 >} --> indent till the end of the paragraph
-ctrl + o --> move the cursor way back to historical placeholders (Jump List)
+ctrl + o --> move the cursor way back to historical placeholders (Jump List --> :jumps, :clearjumps) also jump id can be prepended to ctrl+o to go that specific jump
 ctrl + i --> move the cursor forward from historical placeholders to current placeholder (Jump List)
 J --> to join the below line with space in between
 r <Enter> --> Will break the line from current cursor position to next line
@@ -382,6 +391,7 @@ gn --> go to the last search pattern forward, defaults to visual mode. Can be us
 gJ --> Join lines without space in between
 gm --> move to the middle of the current screen line (based on screen width)
 gM --> move to the middle of the current line
+g_lD --> Delete all the trailing whitespace on the line
 g& --> if we run a subsititute query in one line, later if decide to run the same query for whole document, Use this. 
        Note that the sub query you need to run again should be the one executed recently
 gg=G --> Indent the whole file
