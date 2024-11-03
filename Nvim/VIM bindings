@@ -247,6 +247,7 @@ g --> replace all occurrences within a matching line. by default, only the first
 c --> ask for confirmation before each replacement
 i --> ignore case for searchpattern
 I --> don't ignore case for searchpattern
+You can use # as your delimiter and skip escaping the / which makes for something far easier to parse (:#/User/local/bin/#/usr/sbin/#g)
 
 # --> search the word under cursor backwards
 * --> search the word under cursor forwards
@@ -323,6 +324,7 @@ To persist the folds after reopening the file --> :mkview :loadview
 
 Others
 ------
+@: --> To repeat the last command executed
 z= --> Show spelling corrections
 zg --> Add to spelling dictionary
 zw --> Remove from spelling dictionary
@@ -354,6 +356,8 @@ ctrl + x --> to decrement a number
 To increment a column or lines of number based on the previous number use (g ctrl + a)
 2g followed by Ctrl+a increment by 2 for the first line, by 4 for the second line, by 6 for the third line and so on
 5 followed by ctrl + a, will add 5 to the number under cursor (vice versa for ctrl + x)
+:set number! will toggle the line numbers either off or on depending on their current state. 
+You can also check the current state of any option by adding a question mark ? to the end :set number? will return either number or nonumber depending on if the option is on or off.
 ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
 
 
