@@ -112,7 +112,10 @@ Delete, Yank, Change:
 --> dG - delete entire file from current line
 --> :5d - delete the fifth line
 --> :$d - delete the last line (represented by $)
---> :25m0 - move the twenty-fifth line to the start of the file (:m is short for the :move command) use :t (or :co or :copy) command if you want to copy instead of moving
+--> :25m0 - move the twenty-fifth line to the start of the file (:m is short for the :move command) 
+--> use :t (or :co or :copy) command if you want to copy instead of moving
+          :-10t. – Copy the line 10 lines above the current line and paste it below the current line
+          :+8t. – Copy the line 8 lines after the current line and paste it below
 --> :2,10d - delete the second to tenth lines (comma is used here to separate the start and end ranges)
 --> :5,$d - delete the fifth line to the last line
 --> :5,$-1d - delete the fifth line to the last but one line
@@ -299,7 +302,7 @@ Command mode:
 :later  1m,5m,10m --> To redo changes to future x time
 :iabbrev/:iab AK Ajay Krishna R --> To abbreviate a keyword using space key. It can be defined in the init.lua file as well to make it permanent
 :digraphs --> To enter some special characters that are not in the keyboard (Insert Mode)
-          --> To use an diagraph (Ca is mapped to ©) ctrl + kCa
+          --> To use an diagraph (Ca is mapped to ©) ctrl + kCa, oo - for bullet, -1 for hyphen
 
 Help:
 ----
