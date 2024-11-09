@@ -222,6 +222,7 @@ Ctrl + w - delete word before the cursor during insert mode
 Ctrl + u - delete all the characters before the cursor in the current line, preserves indentation if any
 Ctrl + a - will insert the last word typed during last insert mode
 Ctrl + y - will duplicate the line above the cursor char by char
+Ctrl + e – While in insert mode, copies the character from the line below.
 Ctrl + j - begin new line during insert mode
 Ctrl + h - delete the character before the cursor during insert mode
 Ctrl + t - indent (move right) line one shiftwidth during insert mode
@@ -264,6 +265,8 @@ You can use # as your delimiter and skip escaping the / which makes for somethin
 :.,.+20 g/^#/ normal >> --> indent the current line and the next 20 lines only if the line starts with #
 
 :%s/old/new/g --> Replace everywhere in file
+:%s/old//n --> Just check the number of occurences in the file without replacing
+:%s/{current word under cursor}//g --> To search for current word under cursor give ctrl + r and ctrl + w
 :let i=1 | while i <= 8 | execute '%s/Login_0' . i . '_Const/Const_Login_0' . i . '/c' | let i=i+1 | endwhile      (Incremental substitution)
 :let i=0 | let j=1 | while j <= 5 | execute '%s/_' . i . '_/_T0' . j . '_/c' | let i=i+1 | let j=j+1 | endwhile    (Incremental substitution 1)
 :s/old/new/g --> Replace everywhere in the selected line
@@ -271,6 +274,13 @@ You can use # as your delimiter and skip escaping the / which makes for somethin
 :3,6 s/call/jump/g --> replace all the occurrences of call with jump on lines 3 to 6. g flag performs search and replace for all the matching occurrences
 If there is a space in the search use \+ --> /export\+ PATH
 To search for space character, use \s (eg. :%s/\s/, /g)
+
+:& – Repeats last substitution but resets the flags. Also works with just :s.
+:&& – Repeat last substitution with the same flags.
+:%& – Repeat last substitution on entire file, reset flags.
+:%&& – Repeat last substitution on entire file, keep flags.
+
+:%s/https\?.*/[&](&)/g -- > An ampersand, & , in your replacement pattern will insert the matched pattern into the replacement text
 
 /searchpattern/s+2 --> place the cursor 2 characters after the start of the match (i.e. the third character of the match)
 /searchpattern/s-2 --> place the cursor 2 characters before the start of the match
@@ -280,6 +290,14 @@ To search for space character, use \s (eg. :%s/\s/, /g)
 /searchpattern/+3 --> place the cursor 3 lines below the match
 /searchpattern/-3 --> place the cursor 3 lines above the match
 //s+3 to repeat the last search with this new offset
+
+To not exit the search, but still need to traverse the results back and forth
+ctrl-g – Jumps to the next occurrence of the pattern, but keeps focus in the command line
+ctrl-t – Jumps to the previous occurrence, but again keeps focus in your search
+
+d/foo<Enter> – delete up until foo is found
+c/bar<Enter> – change everything up until bar
+y/pattern<Enter> – yank everything up until pattern
 
 Command mode:
 ------------
@@ -327,6 +345,10 @@ To persist the folds after reopening the file --> :mkview :loadview
 
 Others
 ------
+To write a selected content from current file to a new file
+  shift-v to visually select some lines
+  :w path/to/new/file.rb<Enter> to save those lines to a new file
+  :w >>path/to/new/file.rb<Enter> appends the lines to the existing file
 @: --> To repeat the last command executed
 z= --> Show spelling corrections
 zg --> Add to spelling dictionary
@@ -362,7 +384,6 @@ To increment a column or lines of number based on the previous number use (g ctr
 :set number! will toggle the line numbers either off or on depending on their current state. 
 You can also check the current state of any option by adding a question mark ? to the end :set number? will return either number or nonumber depending on if the option is on or off.
 ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
-
 
 Supermacy of 'g'
 ---------------
