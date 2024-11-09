@@ -282,6 +282,14 @@ To search for space character, use \s (eg. :%s/\s/, /g)
 
 :%s/https\?.*/[&](&)/g -- > An ampersand, & , in your replacement pattern will insert the matched pattern into the replacement text
 
+\U – when used in a replacement pattern, uppercases everything after it
+\L – lowercases everything after it
+\u – uppercases the first character of what follows
+\l – lowercases the first character of what follows
+\e or \E – stops the uppercasing or lowercasing
+
+:.,-9 s/@\S\+/\U&/ --> Output (kocemen_axu62@YAHOO.COM)
+
 /searchpattern/s+2 --> place the cursor 2 characters after the start of the match (i.e. the third character of the match)
 /searchpattern/s-2 --> place the cursor 2 characters before the start of the match
 /searchpattern/e --> place the cursor at the end of the match
