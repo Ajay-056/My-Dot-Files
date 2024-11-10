@@ -251,7 +251,7 @@ g --> replace all occurrences within a matching line. by default, only the first
 c --> ask for confirmation before each replacement
 i --> ignore case for searchpattern
 I --> don't ignore case for searchpattern
-You can use # as your delimiter and skip escaping the / which makes for something far easier to parse (:#/User/local/bin/#/usr/sbin/#g)
+You can use # as your delimiter and skip escaping the / which makes for something far easier to parse (:s#/User/local/bin/#/usr/sbin/#g)
 
 # --> search the word under cursor backwards
 * --> search the word under cursor forwards
@@ -324,8 +324,8 @@ Command mode:
 :vs path to file --> Vertical split a file 
 :sp path to file --> Horizontal split a file 
 :noh --> To remove highlights after a search 
-:earlier 1m,5m,10m --> To undo changes to last x time
-:later  1m,5m,10m --> To redo changes to future x time
+:earlier 5,1m,5s,10h,1d --> To undo changes to last x time, or number of changes
+:later  5,1m,5s,10h,1d --> To redo changes to future x time, or number of changes
 :iabbrev/:iab AK Ajay Krishna R --> To abbreviate a keyword using space key. It can be defined in the init.lua file as well to make it permanent
 :digraphs --> To enter some special characters that are not in the keyboard (Insert Mode)
           --> To use an diagraph (Ca is mapped to ©) ctrl + kCa, oo - for bullet, -1 for hyphen
@@ -353,10 +353,12 @@ To persist the folds after reopening the file --> :mkview :loadview
 
 Others
 ------
+vim +/your_pattern some_file.name --> To jump into the required line number using pattern when opening vim
 To write a selected content from current file to a new file
   shift-v to visually select some lines
   :w path/to/new/file.rb<Enter> to save those lines to a new file
   :w >>path/to/new/file.rb<Enter> appends the lines to the existing file
+:set cuc (cursor column) crb (cursor bindinf) cul (cursor line) hidden list (show special chars)
 @: --> To repeat the last command executed
 z= --> Show spelling corrections
 zg --> Add to spelling dictionary
@@ -365,6 +367,10 @@ zw --> Remove from spelling dictionary
 [s – Jump to the previous misspelled word
 `[ --> Jump to beginning of last yanked text
 `] --> Jump to end of last yanked text
+]m --> jump to the beginning of the next method
+]M --> jump to the end of the next method
+[m --> jump to the beginning of the previous method
+[M --> jump to the end of the previous method
 :center [column], :right [column], :left [column] -- will align the line text accordingly
 q: --> open the recent command history in normal mode
 q/ --> open the recent search history in normal mode
