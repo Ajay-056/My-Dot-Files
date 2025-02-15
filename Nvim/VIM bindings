@@ -93,6 +93,7 @@ gE - jump backwards to the end of a word (words can contain punctuation)
 Delete, Yank, Change:
 --------------------
 --> diw - delete (cut) word under the cursor
+--> d) delete up to the end of the sentence
 --> daw - delete (cut) word under the cursor and the space after or before it
 --> dis - delete inner sentence
 --> das - delete a sentence
@@ -153,9 +154,6 @@ ciw - change (replace) inner word (cursor in any position of the word)
 ci" - change the content inside any surround characters like ()[]{}""''  "<your-content>"
 cw or ce - change (replace) to the end of the word
 xp - transpose two letters (delete and paste)
-
-diw - delete inner word (cursor in any position of the word)
-d) delete up to the end of the sentence
 s - delete character and substitute text
 S - delete line and substitute text (same as cc)
 
