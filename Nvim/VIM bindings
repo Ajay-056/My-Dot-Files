@@ -212,7 +212,6 @@ Insert mode - inserting/appending text:
 --> O - append (open) a new line above the current line
 --> ea - insert (append) at the end of the word
 --> Ctrl + ox - Temporarily enter normal mode to issue one normal-mode command x.
---> jj (Fast press) from insert mode will change to normal without reaching to esc key.
 --> Esc - exit insert mode
 
 Ctrl + rx - insert the contents of register x
