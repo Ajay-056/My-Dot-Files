@@ -3,29 +3,29 @@
 --
 -- See the kickstart.nvim README for more information
 return {
--- File Explorer in Vim Ctrl+f
- {
- "nvim-telescope/telescope-file-browser.nvim",
- dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
- };
--- Use Ctrl+fp to list recent git projects
-  "ahmedkhalf/project.nvim",
--- alpha dashboard
+  -- File Explorer in Vim Ctrl+f
   {
-  'goolord/alpha-nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.startify'.config)
-  end
-  };
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  },
+  -- Use Ctrl+fp to list recent git projects
+  "ahmedkhalf/project.nvim",
+  -- alpha dashboard
+  {
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require 'alpha'.setup(require 'alpha.themes.startify'.config)
+    end
+  },
   "jvgrootveld/telescope-zoxide",
   -- Colorschemes
   "lunarvim/darkplus.nvim",
   "arcticicestudio/nord-vim",
   -- "emacs-grammarly/lsp-grammarly",
--- Quick word search under cursor alt+p and alt+n
+  -- Quick word search under cursor alt+p and alt+n
   "RRethy/vim-illuminate",
--- Titus Custom
+  -- Titus Custom
   "postfen/clipboard-image.nvim",
   "mbbill/undotree",
   "Pocco81/auto-save.nvim",
@@ -35,12 +35,13 @@ return {
   "lunarvim/synthwave84.nvim",
   -- "github/copilot.vim",
 
--- Ajay's Custom
+  -- Ajay's Custom
   "tpope/vim-surround",
   "jiangmiao/auto-pairs",
   "MattesGroeger/vim-bookmarks",
   "farmergreg/vim-lastplace",
   "equalsraf/neovim-gui-shim",
   "mg979/vim-visual-multi",
-  "ThePrimeagen/vim-be-good"
+  "ThePrimeagen/vim-be-good",
+  "junegunn/vim-peekaboo"
 }

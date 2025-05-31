@@ -11,6 +11,16 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- vim.api.nvim_exec('autocmd VimEnter * startinsert', false)
+-- vim.api.nvim_exec2('autocmd BufNewFile *.sh 0r ~/skeletons/bash.sh',false)
+vim.api.nvim_create_autocmd("BufNewFile", {
+  pattern = "*.sh",
+  command = "0r ~/skeletons/bash.sh",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "html",
+  command = "setlocal omnifunc=htmlcomplete#CompleteTags",
+})
 
 -- Install lua package manager
 --    https://github.com/folke/lazy.nvim
@@ -109,12 +119,17 @@ require('lazy').setup({
       },
     },
   },
+  {
+    'GrzegorzKozub/ahk.nvim',
+    cond = vim.fn.has 'win32' == 1,
+    opts = { interpreter = 'AutoHotkey64.exe' },
+  },
 
   {
     "ggandor/leap.nvim",
     event = "BufEnter",
   },
-
+  { 'glacambre/firenvim',   build = ":call firenvim#install(0)" },
   {
     'stevearc/oil.nvim',
     ---@module 'oil'
@@ -164,7 +179,12 @@ require('lazy').setup({
       routes = {
         {
           view = "notify",
-          filter = { event = "msg_showmode" },
+          -- filter = { event = "msg_showmode" },
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "INSERT",
+          },
         },
       },
     },
@@ -207,7 +227,7 @@ require('lazy').setup({
   -- },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -272,7 +292,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',  opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -335,6 +355,10 @@ vim.o.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.o.breakindent = true
 -- Save undo history
+vim.o.history = 10000
+-- vim.o.cul = true
+-- vim.o.cuc = true
+-- vim.o.crb = true
 vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -348,6 +372,8 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 vim.opt.tabstop = 2
+vim.opt.showmatch = true
+vim.opt.cul = true
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.undodir = vim.fn.expand '~/.vim/undodir'
