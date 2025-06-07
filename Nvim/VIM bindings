@@ -341,7 +341,7 @@ Marks
 -----
 (a-z) --> will only allow to jump inside current buffer and not persistent (session needed)
 (A-Z) --> will only allow to jump across different buffer and is persistent
-(0-9) --> 
+(0-9) --> Global marks which are automatically set, represents the historical line numbers that cursor is on (0 --> last line)
 (0-9) --> 
 ma/mA --> mark current position of the cursor to the assigned letter (a-z)
 delmarks a-z --> to delete all the marks if any from a-z
