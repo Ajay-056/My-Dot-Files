@@ -72,6 +72,8 @@ To edit/empty the contents of a register -->
        qA{commands to append} --> Will append to the existing macro
        You can record an empty macro to clear the contents, for example qbq clears the "b register.
 
+Macros
+------
 qa --> to start recording @a
 q --> to stop recording
 50@a --> to repeat action recorded @a 50 times
@@ -384,6 +386,7 @@ ctrl + i --> move the cursor forward from historical placeholders to current pla
 J --> to join the below line with space in between
 r <Enter> --> Will break the line from current cursor position to next line
 ma --> mark current position of the cursor to the assigned letter (a-z). Note: small letter will only allow to jump inside current buffer
+delmarks a-z --> to delete all the marks if any from a-z
 `a --> jump to position of mark a
 y`a --> yank text to position of mark a
 mA --> mark current position of the cursor to the assigned letter (A-Z). Note: To jump from different buffers
