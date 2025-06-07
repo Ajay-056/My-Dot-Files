@@ -342,11 +342,19 @@ Marks
 (a-z) --> will only allow to jump inside current buffer and not persistent (session needed)
 (A-Z) --> will only allow to jump across different buffer and is persistent
 (0-9) --> Global marks which are automatically set, represents the historical line numbers that cursor is on (0 --> last line)
-(0-9) --> 
+(special characters):
+          ''/~~ --> toggle between last jump and current line
+          '. --> go to the last change made
+          `[ --> Jump to beginning of last yanked text
+          `] --> Jump to end of last yanked text
+          '" --> Jump to the line when last exited
 ma/mA --> mark current position of the cursor to the assigned letter (a-z)
-delmarks a-z --> to delete all the marks if any from a-z
 'a/`a --> jump to position of mark a (either to start of line or end of line)
 y`a --> yank text to position of mark a
+:marks / :marks a --> to list all or specific mark
+:delmarks a-z --> to delete all the marks if any from a-z
+:delmarks a B c --> delete specific marks
+:delmarks! --> delete all marks (only works for lower case marks)
 
 Folds
 -----
@@ -375,8 +383,6 @@ zg --> Add to spelling dictionary
 zw --> Remove from spelling dictionary
 ]s – Jump to the next misspelled word
 [s – Jump to the previous misspelled word
-`[ --> Jump to beginning of last yanked text
-`] --> Jump to end of last yanked text
 ]m --> jump to the beginning of the next method
 ]M --> jump to the end of the next method
 [m --> jump to the beginning of the previous method
