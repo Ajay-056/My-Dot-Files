@@ -337,6 +337,17 @@ Help:
 :help i_CTRL-A v_CTRL-A i_<Up> 
 :help 'option'
 
+Marks
+-----
+(a-z) --> will only allow to jump inside current buffer and not persistent (session needed)
+(A-Z) --> will only allow to jump across different buffer and is persistent
+(0-9) --> 
+(0-9) --> 
+ma/mA --> mark current position of the cursor to the assigned letter (a-z)
+delmarks a-z --> to delete all the marks if any from a-z
+'a/`a --> jump to position of mark a (either to start of line or end of line)
+y`a --> yank text to position of mark a
+
 Folds
 -----
 To create a fold for a paragraph --> zf (use text objects, like ap, ip)
@@ -385,11 +396,6 @@ ctrl + o --> move the cursor way back to historical placeholders (Jump List --> 
 ctrl + i --> move the cursor forward from historical placeholders to current placeholder (Jump List)
 J --> to join the below line with space in between
 r <Enter> --> Will break the line from current cursor position to next line
-ma --> mark current position of the cursor to the assigned letter (a-z). Note: small letter will only allow to jump inside current buffer
-delmarks a-z --> to delete all the marks if any from a-z
-`a --> jump to position of mark a
-y`a --> yank text to position of mark a
-mA --> mark current position of the cursor to the assigned letter (A-Z). Note: To jump from different buffers
 ctrl + a --> to increment a number
 ctrl + x --> to decrement a number
 To increment a column or lines of number based on the previous number use (g ctrl + a)
