@@ -413,6 +413,8 @@ ysiw, ys3w --> Surround with brackets,quotes plugin (nvim only)
 
 Supermacy of 'g'
 ---------------
+g# --> search the word under cursor backwards (even partial match)
+g* --> search the word under cursor forwards (even partial match)
 gj, gk --> To go line by line in a big paragraph. we can remap j and k to gj and gk
 g0,g$ --> To go to start or end of current line in a paragraph
 gqq (last q is text object),gq5j --> to auto format the paragraph. can be mapped to Q
